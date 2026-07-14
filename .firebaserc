@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "asoltu-school-erp"
+  },
+  "targets": {
+    "asoltu-school-erp": {
+      "hosting": {
+        "website": [
+          "asoltu-com"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}

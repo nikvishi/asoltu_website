@@ -1,0 +1,7 @@
+# Keep deploy payloads limited to hosting output.
+**/*
+!build/
+!build/web/
+!build/web/**
+!firebase.json
+!.firebaserc

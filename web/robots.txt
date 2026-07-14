@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://asoltu.com/sitemap.xml
