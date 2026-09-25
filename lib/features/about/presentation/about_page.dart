@@ -57,10 +57,10 @@ class AboutPage extends StatelessWidget {
                 PageBreadcrumb(current: 'About'),
                 SizedBox(height: 20),
                 SectionHeading(
-                  eyebrow: 'About ASOLTU',
-                  title: 'Software schools trust every day',
+                  eyebrow: 'About ASOLTU Technologies',
+                  title: 'Building intelligent software for schools & businesses',
                   subtitle:
-                      'ASOLTU Tech Solutions builds the operating system for modern institutions — so leaders spend time on students, not spreadsheets.',
+                      'ASOLTU Technologies is a modern software engineering company in India. We build School ERP, Flutter apps, web platforms, cloud and AI solutions so schools and businesses run on reliable systems — not spreadsheets.',
                   center: true,
                 ),
               ],
@@ -75,12 +75,12 @@ class AboutPage extends StatelessWidget {
               final mission = _card(
                 context,
                 'Mission',
-                'Make school management simple, secure, and intelligent for every campus size — single schools through multi-brand education groups.',
+                'Deliver secure School ERP and business software that make operations simple and intelligent — for CBSE schools, RBSE schools, multi-campus groups and growing organizations across India including Rajasthan.',
               );
               final vision = _card(
                 context,
                 'Vision',
-                'A world where education leaders run transparent operations, parents stay informed, and staff collaborate on one trusted platform.',
+                'Become a trusted technology partner where education leaders run transparent operations, parents stay informed, and institutions scale on one modern platform backed by expert engineering.',
               );
               if (wide) {
                 return Row(
@@ -96,12 +96,24 @@ class AboutPage extends StatelessWidget {
           ),
         ),
         PageSection(
-          child: const SectionHeading(
-            eyebrow: 'Our story',
-            title: 'Built with operators in mind',
-            subtitle:
-                'ASOLTU is shaped by real campus complexity: multi-role access, fee cycles, attendance discipline, parent trust, and the need for one system of record. We design for principals, accountants, teachers, and parents — not only for IT checklists. Our philosophy is simple: software should disappear into reliable daily rhythm.',
-            center: true,
+          child: Column(
+            children: [
+              const SectionHeading(
+                eyebrow: 'Why we built ASOLTU',
+                title: 'Founder message & product mission',
+                subtitle:
+                    'We started ASOLTU Technologies because schools and growing businesses deserve modern software without complexity theater. Our mission is to build intelligent, reliable systems — School ERP as the flagship, plus custom software, Flutter apps, AI and cloud solutions — with honest communication and long-term craft.',
+                center: true,
+              ),
+              const SizedBox(height: 20),
+              const SectionHeading(
+                eyebrow: 'Development philosophy',
+                title: 'Operators first. Technology second.',
+                subtitle:
+                    'ASOLTU is shaped by real operational complexity: multi-role access, fee cycles, attendance discipline, parent trust, and the need for one system of record. We design for principals, accountants, teachers, parents and business operators — not only for IT checklists. Software should disappear into a reliable daily rhythm.',
+                center: true,
+              ),
+            ],
           ),
         ),
         PageSection(
@@ -278,6 +290,44 @@ class AboutPage extends StatelessWidget {
                     ),
                 ],
               ),
+              const SizedBox(height: 36),
+              const SectionHeading(
+                eyebrow: 'Experience & trust',
+                title: 'E-E-A-T for schools and partners',
+                subtitle:
+                    'Experience delivering education ERP and custom software. Expertise in Flutter, cloud and multi-tenant systems. Authoritative product design for CBSE/RBSE workflows. Trust through clear privacy, data protection policies and human support.',
+                center: true,
+              ),
+              const SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(22),
+                decoration: BoxDecoration(
+                  color: AppColors.surfaceMuted,
+                  borderRadius: BorderRadius.circular(AppRadius.lg),
+                  border: Border.all(color: AppColors.borderLight),
+                ),
+                child: Column(
+                  children: [
+                    Text(
+                      'Contact & service area',
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: AppColors.brandNavy,
+                            fontWeight: FontWeight.w700,
+                          ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      'ASOLTU Technologies · RMA, Ramganj Mandi, Rajasthan, India\n'
+                      'Email: info@asoltu.com · Phone: +91-9462133119\n'
+                      'Hours: Monday to Saturday, 10:00 AM – 7:00 PM IST\n'
+                      'ERP portal: erp.asoltu.com · Website: asoltu.com',
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ],
+                ),
+              ),
               const SizedBox(height: 28),
               Wrap(
                 spacing: 12,
@@ -289,8 +339,13 @@ class AboutPage extends StatelessWidget {
                     onPressed: () => context.go(AppRoutes.contact),
                   ),
                   AsoltuButton(
-                    label: 'Careers',
+                    label: 'View Solutions',
                     variant: AsoltuButtonVariant.secondary,
+                    onPressed: () => context.go(AppRoutes.products),
+                  ),
+                  AsoltuButton(
+                    label: 'Careers',
+                    variant: AsoltuButtonVariant.ghost,
                     onPressed: () => context.go(AppRoutes.careers),
                   ),
                 ],

@@ -32,7 +32,7 @@ class CookiesPage extends StatelessWidget {
         ),
         (
           '6. Contact',
-          'Questions: support@asoltu.com'
+          'Questions: info@asoltu.com'
         ),
       ],
     );

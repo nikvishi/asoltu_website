@@ -1,3 +1,4 @@
+import '../../features/landings/data/landing_content.dart';
 import '../constants/app_strings.dart';
 import '../constants/app_urls.dart';
 import '../routing/route_names.dart';
@@ -9,21 +10,34 @@ class SeoMeta {
     required this.description,
     this.path = '/',
     this.noIndex = false,
+    this.ogType = 'website',
+    this.keywords,
   });
 
   final String title;
   final String description;
   final String path;
   final bool noIndex;
+  final String ogType;
+  final String? keywords;
 
-  String get canonicalUrl => '${AppUrls.marketingSite}$path';
+  String get canonicalUrl {
+    final base = AppUrls.marketingSite;
+    if (path.isEmpty || path == '/') return '$base/';
+    return '$base$path';
+  }
 
-  String get fullTitle => path == AppRoutes.home
+  /// Home uses exact title; inner pages append brand for uniqueness.
+  String get fullTitle => path == AppRoutes.home || path == '/'
       ? title
-      : '$title · ${AppStrings.brandName}';
+      : (title.contains(AppStrings.brandName)
+            ? title
+            : '$title | ${AppStrings.brandName}');
+
+  String get keywordSet => keywords ?? AppStrings.metaKeywords;
 }
 
-/// SEO registry for every marketing route.
+/// SEO registry for every marketing route — unique title + description each.
 abstract final class SeoConfig {
   SeoConfig._();
 
@@ -33,105 +47,176 @@ abstract final class SeoConfig {
     path: AppRoutes.home,
   );
 
-  /// Home uses the same default meta (optimized for Phase 4.2).
-
   static final Map<String, SeoMeta> byPath = {
     AppRoutes.home: defaultMeta,
     AppRoutes.products: const SeoMeta(
-      title: 'Products — School ERP, Parent App, AI & More',
+      title: 'Products | ASOLTU',
       description:
-          'ASOLTU products: School ERP, Coaching ERP, College ERP, Multi Campus, Teacher/Parent/Student apps, HR, Finance, Attendance, Exams, Transport, Hostel, Library, AI Assistant.',
+          'Explore the complete suite of ASOLTU software. From enterprise school ERP and competitive exam platforms to powerful desktop utilities.',
       path: AppRoutes.products,
     ),
-    AppRoutes.solutions: const SeoMeta(
-      title: 'Solutions — Schools, Coaching, Colleges & Groups',
+    AppRoutes.education: const SeoMeta(
+      title: 'Education Software | ASOLTU',
       description:
-          'ASOLTU solutions for schools, coaching institutes, colleges, education groups, international schools, and smart campuses — problems vs solutions.',
-      path: AppRoutes.solutions,
+          'School management and exam preparation platforms engineered by ASOLTU. Including comprehensive mock tests, AI proctoring, and modern campus ERP.',
+      path: AppRoutes.education,
     ),
-    AppRoutes.pricing: const SeoMeta(
-      title: 'Pricing',
+    AppRoutes.software: const SeoMeta(
+      title: 'Desktop & Web Software | ASOLTU',
       description:
-          'ASOLTU School ERP pricing — Starter, Professional, Enterprise, and Education Group plans. Book a free demo.',
-      path: AppRoutes.pricing,
+          'High-performance desktop and web utilities, including DataHop for private P2P transfers and Download Manager powered by a Rust engine.',
+      path: AppRoutes.software,
+    ),
+    AppRoutes.business: const SeoMeta(
+      title: 'Business Solutions | ASOLTU',
+      description:
+          'Custom software development, enterprise cloud architectures, and document utilities like PDF-O designed for operational efficiency.',
+      path: AppRoutes.business,
+    ),
+    AppRoutes.examSeries: const SeoMeta(
+      title: 'Exam Series | ASOLTU',
+      description:
+          'Premium chapterwise and full mock tests for RPSC, REET, SSC, UPSC, and ICAI, secured with advanced AI proctoring.',
+      path: AppRoutes.examSeries,
+    ),
+    AppRoutes.schoolErp: const SeoMeta(
+      title: 'School ERP | ASOLTU',
+      description:
+          'A modern operating system for your campus. Unify admissions, fees, attendance, homework, exams, and AI-driven reporting into one platform.',
+      path: AppRoutes.schoolErp,
+    ),
+    AppRoutes.downloadManager: const SeoMeta(
+      title: 'Download Manager | ASOLTU',
+      description:
+          'A powerful, crash-safe download manager powered by a Rust engine with multi-connection segmented downloading capabilities.',
+      path: AppRoutes.downloadManager,
+    ),
+    AppRoutes.dataHop: const SeoMeta(
+      title: 'DataHop | ASOLTU',
+      description:
+          'Frictionless, private P2P file transfers directly between devices. No cloud, no limits, no accounts. Works on macOS, Windows, iOS, and Android.',
+      path: AppRoutes.dataHop,
+    ),
+    AppRoutes.asoltuRemote: const SeoMeta(
+      title: 'AsoltuRemote | ASOLTU',
+      description:
+          'Control your desktop from anywhere securely. Low-latency remote access, file transfer, and cross-platform clients for Windows, Mac, and iOS.',
+      path: AppRoutes.asoltuRemote,
+    ),
+    AppRoutes.pdfO: const SeoMeta(
+      title: 'PDF-O | ASOLTU',
+      description:
+          'Edit, compress, and interact with PDFs using AI. Extract text effortlessly using our powerful OCR scanner.',
+      path: AppRoutes.pdfO,
+    ),
+    AppRoutes.downloads: const SeoMeta(
+      title: 'Download Center | ASOLTU',
+      description:
+          'Get the latest binaries and installer packages for ASOLTU software. Download DataHop, AsoltuRemote, Download Manager, and more.',
+      path: AppRoutes.downloads,
     ),
     AppRoutes.about: const SeoMeta(
-      title: 'About',
+      title: 'About ASOLTU Technologies | Software Development Company India',
       description:
-          'Learn about ASOLTU Tech Solutions and our mission in education technology.',
+          'ASOLTU Technologies is a software engineering company building School ERP, Flutter apps, web portals, cloud and AI solutions.',
       path: AppRoutes.about,
     ),
-    AppRoutes.resources: const SeoMeta(
-      title: 'Resources',
-      description:
-          'Guides, whitepapers, and resources for school leaders and IT teams.',
-      path: AppRoutes.resources,
-    ),
     AppRoutes.blog: const SeoMeta(
-      title: 'Blog',
+      title: 'Blog | ASOLTU',
       description:
-          'Insights on school operations, SaaS, and digital transformation in education.',
+          'Articles on software development, education technology, cloud infrastructure, and product design from ASOLTU.',
       path: AppRoutes.blog,
+      ogType: 'blog',
     ),
     AppRoutes.contact: const SeoMeta(
-      title: 'Contact',
-      description: 'Talk to ASOLTU sales and support about School ERP for your institution.',
+      title: 'Contact ASOLTU | Sales & Support',
+      description:
+          'Contact ASOLTU Technologies for product demos, custom software projects, or enterprise solutions. Email info@asoltu.com or call +91-9462133119.',
       path: AppRoutes.contact,
     ),
     AppRoutes.careers: const SeoMeta(
-      title: 'Careers',
-      description: 'Join ASOLTU — build the future of school management software.',
+      title: 'Careers at ASOLTU',
+      description:
+          'Join our team. Build high-performance software, cross-platform apps, and meaningful products for education and business.',
       path: AppRoutes.careers,
     ),
     AppRoutes.privacy: const SeoMeta(
-      title: 'Privacy Policy',
-      description: 'How ASOLTU collects, uses, and protects personal data.',
+      title: 'Privacy Policy | ASOLTU',
+      description:
+          'How ASOLTU Technologies collects, uses and protects personal data.',
       path: AppRoutes.privacy,
     ),
     AppRoutes.terms: const SeoMeta(
-      title: 'Terms of Service',
+      title: 'Terms of Service | ASOLTU',
       description: 'Terms governing use of ASOLTU products and services.',
       path: AppRoutes.terms,
     ),
     AppRoutes.refund: const SeoMeta(
-      title: 'Refund Policy',
-      description: 'ASOLTU subscription and services refund policy.',
+      title: 'Refund Policy | ASOLTU',
+      description: 'ASOLTU subscription and software services refund policy.',
       path: AppRoutes.refund,
     ),
     AppRoutes.cookies: const SeoMeta(
-      title: 'Cookie Policy',
-      description: 'How ASOLTU uses cookies and similar technologies on asoltu.com.',
+      title: 'Cookie Policy | ASOLTU',
+      description:
+          'How ASOLTU uses cookies on asoltu.com for analytics and functionality.',
       path: AppRoutes.cookies,
     ),
     AppRoutes.dataProtection: const SeoMeta(
-      title: 'Data Protection',
+      title: 'Data Protection | ASOLTU',
       description:
-          'How ASOLTU protects marketing leads and multi-tenant school ERP data — security, retention, and rights.',
+          'Security, data retention, and privacy rights across ASOLTU services.',
       path: AppRoutes.dataProtection,
     ),
     AppRoutes.disclaimer: const SeoMeta(
-      title: 'Disclaimer',
-      description:
-          'Important disclaimers for ASOLTU marketing content, product descriptions, and website use.',
+      title: 'Disclaimer | ASOLTU',
+      description: 'Important disclaimers for ASOLTU products and websites.',
       path: AppRoutes.disclaimer,
     ),
     AppRoutes.documentation: const SeoMeta(
-      title: 'Documentation',
-      description: 'Product documentation and implementation guides for ASOLTU School ERP.',
+      title: 'Documentation | ASOLTU',
+      description: 'Product documentation and user guides for ASOLTU software.',
       path: AppRoutes.documentation,
     ),
     AppRoutes.support: const SeoMeta(
-      title: 'Support',
-      description: 'Get help with ASOLTU School ERP — helpdesk, FAQs, and contact options.',
+      title: 'Support | ASOLTU Helpdesk',
+      description:
+          'Get help with ASOLTU products. Find FAQs or contact our technical support team.',
       path: AppRoutes.support,
     ),
     AppRoutes.login: const SeoMeta(
-      title: 'Login',
-      description: 'Sign in to ASOLTU School ERP at erp.asoltu.com.',
+      title: 'Login | ASOLTU',
+      description: 'Sign in to ASOLTU portals and connected services.',
       path: AppRoutes.login,
       noIndex: true,
     ),
+    // SEO landings registered from content registry
+    for (final landing in LandingContent.all)
+      landing.path: SeoMeta(
+        title: landing.metaTitle,
+        description: landing.metaDescription,
+        path: landing.path,
+        keywords:
+            '${landing.title}, ASOLTU, School ERP, Software Development India',
+      ),
   };
 
-  static SeoMeta forPath(String path) => byPath[path] ?? defaultMeta;
+  static SeoMeta forPath(String path) {
+    final normalized = path.isEmpty ? '/' : path;
+    return byPath[normalized] ??
+        SeoMeta(
+          title: AppStrings.metaDefaultTitle,
+          description: AppStrings.metaDefaultDescription,
+          path: normalized,
+        );
+  }
+
+  /// Public indexable paths for sitemap generation / docs.
+  static List<String> get indexablePaths {
+    final paths = byPath.entries
+        .where((e) => !e.value.noIndex)
+        .map((e) => e.key)
+        .toList();
+    return paths;
+  }
 }

@@ -1,0 +1,110 @@
+- generic [ref=f10e1]:
+  - banner "App Store Connect" [ref=f10e3]:
+    - generic [ref=f10e4]:
+      - heading [level=1] [ref=f10e6]:
+        - link "App Store Connect" [ref=f10e7] [cursor=pointer]:
+          - /url: /
+      - navigation "Global" [ref=f10e8]:
+        - list [ref=f10e10]:
+          - listitem [ref=f10e11]:
+            - link "Apps" [ref=f10e12] [cursor=pointer]:
+              - /url: /apps
+          - listitem [ref=f10e13]:
+            - link "Trends" [ref=f10e14] [cursor=pointer]:
+              - /url: /trends
+          - listitem [ref=f10e15]:
+            - link "Reports" [ref=f10e16] [cursor=pointer]:
+              - /url: /itc/payments_and_financial_reports
+          - listitem [ref=f10e17]:
+            - link "Business" [ref=f10e18] [cursor=pointer]:
+              - /url: /business
+          - listitem [ref=f10e19]:
+            - link "Users and Access" [ref=f10e20] [cursor=pointer]:
+              - /url: /access/users
+      - button "Nikhil Rokadiya Nikhil Rokadiya Account name menu" [ref=f10e22] [cursor=pointer]:
+        - generic:
+          - generic: Nikhil Rokadiya
+          - generic: Nikhil Rokadiya
+  - main [ref=f10e29]:
+    - generic [ref=f10e31]:
+      - generic [ref=f10e33]:
+        - generic [ref=f10e34]:
+          - generic [ref=f10e35]:
+            - heading "Apps" [level=2] [ref=f10e36]
+            - generic [ref=f10e37]:
+              - button "New App" [ref=f10e39] [cursor=pointer]
+              - button "more" [ref=f10e43] [cursor=pointer]:
+                - img "Icons/Ellipsis" [ref=f10e45]
+          - button "Search" [ref=f10e53] [cursor=pointer]
+        - separator [ref=f10e56]
+      - generic [ref=f10e58]:
+        - paragraph [ref=f10e61]: Review New Social Media Questions on Age Ratings
+        - paragraph [ref=f10e62]:
+          - text: See if these new questions about social media capabilities apply to your app in the App Information section.
+          - link "Learn More" [ref=f10e63] [cursor=pointer]:
+            - /url: https://developer.apple.com/news/?id=tlur8uvi
+        - button [ref=f10e64] [cursor=pointer]
+      - grid "grid" [ref=f10e70]:
+        - row [ref=f10e71]:
+          - gridcell [ref=f10e72]:
+            - generic [ref=f10e73]:
+              - gridcell [ref=f10e74]:
+                - generic [ref=f10e76] [cursor=pointer]:
+                  - generic [ref=f10e77]:
+                    - link "PDF-O" [ref=f10e78]:
+                      - /url: /apps/6797936978/distribution
+                      - generic "PDF-O" [ref=f10e79]:
+                        - img "PDF-O" [ref=f10e80]
+                    - button "View App Review Issues & Messages" [ref=f10e81]
+                  - generic [ref=f10e84]:
+                    - paragraph [ref=f10e85]:
+                      - link "PDF-O" [ref=f10e86]:
+                        - /url: /apps/6797936978/distribution
+                    - paragraph [ref=f10e87]:
+                      - link "View App Review Issues & Messages" [ref=f10e88]:
+                        - /url: /apps/6797936978/distribution/reviewsubmissions
+                    - list:
+                      - listitem:
+                        - paragraph:
+                          - link "PDF-O iOS 1.0 Waiting for Review" [ref=f10e91]:
+                            - /url: /apps/6797936978/distribution/ios/version/inflight
+                            - text: iOS 1.0 Waiting for Review
+              - gridcell [ref=f10e94]:
+                - generic [ref=f10e96] [cursor=pointer]:
+                  - generic [ref=f10e97]:
+                    - link "Asoltu" [ref=f10e98]:
+                      - /url: /apps/6796294470/distribution
+                      - generic "Asoltu" [ref=f10e99]:
+                        - img "Asoltu" [ref=f10e100]
+                    - button "View App Review Issues & Messages" [ref=f10e101]
+                  - generic [ref=f10e104]:
+                    - paragraph [ref=f10e105]:
+                      - link "Asoltu" [ref=f10e106]:
+                        - /url: /apps/6796294470/distribution
+                    - paragraph [ref=f10e107]:
+                      - link "View App Review Issues & Messages" [ref=f10e108]:
+                        - /url: /apps/6796294470/distribution/reviewsubmissions
+                    - list:
+                      - listitem:
+                        - paragraph:
+                          - link "Asoltu iOS 1.0 Waiting for Review" [ref=f10e111]:
+                            - /url: /apps/6796294470/distribution/ios/version/inflight
+                            - text: iOS 1.0 Waiting for Review
+            - separator [ref=f10e114]
+  - contentinfo [ref=f10e116]:
+    - generic [ref=f10e117]:
+      - list [ref=f10e118]:
+        - listitem [ref=f10e119]: App Store Connect
+      - list [ref=f10e120]:
+        - listitem [ref=f10e121]: Copyright © 2026 Apple Inc. All rights reserved. |
+        - listitem [ref=f10e122]:
+          - link "Terms of Service" [ref=f10e123] [cursor=pointer]:
+            - /url: /WebObjects/iTunesConnect.woa/wa/termsOfService
+          - text: "|"
+        - listitem [ref=f10e124]:
+          - link "Privacy Policy" [ref=f10e125] [cursor=pointer]:
+            - /url: https://www.apple.com/legal/privacy
+          - text: "|"
+        - listitem [ref=f10e126]:
+          - link "Contact Us" [ref=f10e127] [cursor=pointer]:
+            - /url: /contact-us

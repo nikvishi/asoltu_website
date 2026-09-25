@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../analytics/analytics_hooks.dart';
+import '../../constants/app_urls.dart';
 import '../../services/lead_service.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_radius.dart';
@@ -115,7 +116,8 @@ class _BookDemoDialogState extends State<BookDemoDialog> {
     } catch (_) {
       if (mounted) {
         setState(() =>
-            _error = 'Could not submit. Please try again or email sales@asoltu.com.');
+            _error =
+                'Could not submit. Please try again or email ${AppUrls.infoEmailDisplay}.');
       }
     } finally {
       if (mounted) setState(() => _loading = false);

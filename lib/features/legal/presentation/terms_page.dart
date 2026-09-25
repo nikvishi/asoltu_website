@@ -28,7 +28,7 @@ class TermsPage extends StatelessWidget {
         ),
         (
           '5. Intellectual property',
-          'ASOLTU branding, UI, copy, and software are owned by ASOLTU Tech Solutions or its licensors. You may not copy or redistribute materials without permission.'
+          'ASOLTU branding, UI, copy, and software are owned by ASOLTU Technologies or its licensors. You may not copy or redistribute materials without permission.'
         ),
         (
           '6. Disclaimers',
@@ -44,7 +44,7 @@ class TermsPage extends StatelessWidget {
         ),
         (
           '9. Contact',
-          'Questions: support@asoltu.com'
+          'Questions: info@asoltu.com'
         ),
       ],
     );

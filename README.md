@@ -62,10 +62,21 @@ lib/
 
 ## Hosting note
 
-Deploy this app’s `build/web` to the **asoltu.com** hosting target only.  
-Keep ERP hosting on **erp.asoltu.com** as a separate Firebase/Hosting site.
+Both sites live in the Firebase project `asoltu-school-erp`, as two separate
+Hosting sites. Hosting targets are named after their site so the target name can
+never disagree with what it deploys to:
 
-SPA rewrites should map `**` → `index.html` for clean path routes.
+| Site ID | Domains | Repo | Deploy command |
+|---|---|---|---|
+| `asoltu-com` | asoltu.com, www.asoltu.com | this repo | `firebase deploy --only hosting:asoltu-com` |
+| `asoltu-school-erp` | erp.asoltu.com | AsoltuSchoolERP | `firebase deploy --only hosting:asoltu-school-erp` |
+
+This repo's `firebase.json` declares exactly one hosting config (`asoltu-com`),
+so even a bare `firebase deploy --only hosting` cannot reach the ERP site — and
+the ERP repo likewise cannot reach `asoltu-com`. Never add a second hosting
+entry here.
+
+SPA rewrites map `**` → `index.html` for clean path routes.
 
 ## Next phase
 

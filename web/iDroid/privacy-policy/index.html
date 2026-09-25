@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>i2Droid Privacy Policy</title>
+<meta name="robots" content="index, follow" />
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f4f4f1;
+    --fg: #09090b;
+    --muted: #57575a;
+    --accent: #2563eb;
+    --border: #e2e2df;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+  header {
+    margin-bottom: 2.5rem;
+  }
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.4rem;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 2.25rem 0 0.75rem;
+  }
+  p, li {
+    font-size: 0.97rem;
+    color: #26262a;
+  }
+  ul { padding-left: 1.25rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--accent); }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem 2rem;
+  }
+  .contact {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>i2Droid — Privacy Policy</h1>
+    <p class="updated">Last updated: 13 September 2026</p>
+  </header>
+
+  <div class="card">
+    <p>
+      i2Droid ("the app") is a direct, phone-to-phone file transfer tool.
+      It moves files over an encrypted WebRTC connection straight between two devices. This page
+      explains what data the app touches, and — just as importantly — what it never does.
+    </p>
+
+    <h2>We do not store your files. Period.</h2>
+    <p>
+      <strong>i2Droid is strictly a file-to-file transfer app.</strong> Photos, videos, and any
+      other file you send are transferred directly between the two devices over an encrypted
+      (DTLS/SRTP) WebRTC data channel. We do not upload, store, cache, back up, or have any
+      access whatsoever to the contents of the files you transfer — not on our servers, not in
+      any database, not anywhere — whether you're online or using the fully offline (no-internet)
+      pairing mode. Once a transfer finishes, the file exists only on the sender's and receiver's
+      own devices, exactly as if they had connected a cable between them.
+    </p>
+
+    <h2>We do not collect your location</h2>
+    <p>
+      i2Droid does not request, collect, or store your device's location under any
+      circumstances. Nearby device discovery (when used) relies only on local network
+      information, never GPS or location services.
+    </p>
+
+    <h2>What the app accesses on your device, and why</h2>
+    <ul>
+      <li><strong>Camera</strong> — used only to scan a QR pairing code shown on the other device.
+        Camera frames are analyzed locally on-device to read the code and are never recorded, saved, or transmitted anywhere.</li>
+      <li><strong>Photos/videos</strong> — accessed only when you pick a file to send, or when
+        saving a file you've received, both direct results of your own action in the app.</li>
+      <li><strong>Local network</strong> — used to discover and connect directly to the other
+        device for a transfer, including the fully offline pairing mode which needs no internet
+        connection at all.</li>
+      <li><strong>Microphone</strong> — the underlying WebRTC technology the app is built on can
+        declare this permission on some platforms, but i2Droid's own code never requests or
+        captures audio (every media request the app makes explicitly excludes audio).</li>
+    </ul>
+
+    <h2>Signaling (pairing handshake)</h2>
+    <p>
+      To open a direct connection, two devices first exchange a small amount of connection
+      metadata (not file content) — either through the app's own signaling relay when both
+      devices are online, or by scanning a QR code directly, with zero server involved, in
+      offline mode. This handshake data is not stored after the connection is established.
+    </p>
+
+    <h2>Optional account &amp; history</h2>
+    <p>
+      i2Droid works fully as a guest — no account is required to send or receive files. If you
+      choose to sign in, the app may sync your transfer <em>history metadata</em> (file names,
+      sizes, timestamps — never file contents) across your own devices. You can wipe this history
+      at any time from within the app.
+    </p>
+
+    <h2>Ads</h2>
+    <p>
+      i2Droid is free and supported by ads served by Google AdMob (Google LLC). The app shows a
+      banner and occasional full-screen ads. All ad requests are <strong>non-personalized</strong>:
+      i2Droid does not request App Tracking Transparency permission, does not access your
+      device's advertising identifier (IDFA), and does not use your data to build an advertising
+      profile. Ads never have access to the files you transfer.
+    </p>
+    <p>
+      To serve and measure ads, and to prevent fraud, the Google Mobile Ads SDK may collect
+      limited technical data such as device and app information, IP address (used to estimate a
+      coarse, country-level location), ad interactions, and diagnostic data. This data is
+      processed by Google under its own policies — see
+      <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">How Google uses information from sites or apps that use its services</a>.
+      Where required by law (for example in the EEA and UK), the app asks for your consent before
+      ads are requested.
+    </p>
+
+    <h2>Ad-Free subscription</h2>
+    <p>
+      You can remove all ads with the optional Ad-Free yearly auto-renewable subscription,
+      purchased through Apple's In-App Purchase. Payment is processed entirely by Apple — i2Droid
+      never receives or stores your payment details. The app only checks with Apple whether an
+      active Ad-Free subscription exists on your Apple Account, so it knows not to show ads. You
+      can manage or cancel the subscription at any time in your Apple Account settings.
+    </p>
+
+    <h2>No sale of personal information</h2>
+    <p>
+      We do not sell your personal information. Apart from the ad-serving data described above,
+      which Google processes to deliver non-personalized ads, we do not share your information
+      with third parties.
+    </p>
+
+    <h2>Data deletion</h2>
+    <p>
+      Local transfer history can be cleared at any time from the app's "You" tab. If you signed
+      in, you can permanently delete your account and any synced history metadata at any time
+      from within the app (Settings → Delete Account), or by contacting us using the details
+      below — deletion requests are processed within 30 days.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      If this policy changes, the "Last updated" date at the top of this page will change
+      accordingly.
+    </p>
+
+    <div class="contact">
+      Questions about this policy or your data? Contact <a href="mailto:support@asoltu.com">support@asoltu.com</a>.
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -12,7 +12,7 @@ class PrivacyPage extends StatelessWidget {
       sections: [
         (
           '1. Introduction',
-          'ASOLTU Tech Solutions (“ASOLTU”, “we”, “us”) operates the marketing website at asoltu.com and school ERP services at erp.asoltu.com. This Privacy Policy explains how we collect, use, and protect personal information submitted through our marketing website, including contact and demo request forms.'
+          'ASOLTU Technologies (“ASOLTU”, “we”, “us”) operates the marketing website at asoltu.com and school ERP services at erp.asoltu.com. This Privacy Policy explains how we collect, use, and protect personal information submitted through our marketing website, including contact and demo request forms.'
         ),
         (
           '2. Information we collect',
@@ -36,7 +36,7 @@ class PrivacyPage extends StatelessWidget {
         ),
         (
           '7. Your rights',
-          'Depending on your jurisdiction, you may request access, correction, or deletion of personal data we hold about you. Contact support@asoltu.com for privacy requests.'
+          'Depending on your jurisdiction, you may request access, correction, or deletion of personal data we hold about you. Contact info@asoltu.com for privacy requests.'
         ),
         (
           '8. Children',
@@ -48,7 +48,7 @@ class PrivacyPage extends StatelessWidget {
         ),
         (
           '10. Contact',
-          'ASOLTU Tech Solutions — privacy enquiries: support@asoltu.com'
+          'ASOLTU Technologies — privacy enquiries: info@asoltu.com'
         ),
       ],
     );

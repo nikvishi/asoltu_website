@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../constants/app_urls.dart';
 import '../../routing/route_names.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_spacing.dart';
@@ -51,7 +52,7 @@ class EmptyPagePlaceholder extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text(
-            'Need help? support@asoltu.com',
+            'Need help? ${AppUrls.infoEmailDisplay}',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   color: AppColors.textMuted,
                 ),

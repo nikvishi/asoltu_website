@@ -12,7 +12,7 @@ class DisclaimerPage extends StatelessWidget {
       sections: [
         (
           '1. General information',
-          'Content on asoltu.com is provided for general informational purposes about ASOLTU Tech Solutions and ASOLTU School ERP. It does not constitute legal, financial, or professional advice for any specific institution.'
+          'Content on asoltu.com is provided for general informational purposes about ASOLTU Technologies and ASOLTU School ERP. It does not constitute legal, financial, or professional advice for any specific institution.'
         ),
         (
           '2. Product descriptions',
@@ -31,8 +31,8 @@ class DisclaimerPage extends StatelessWidget {
           'Use of the ASOLTU School ERP product at erp.asoltu.com is governed by separate subscription and service terms. Access via marketing forms does not automatically create an ERP tenancy or commercial contract.'
         ),
         (
-          '6. Testimonials & illustrative stories',
-          'Customer stories, sample scenarios, and representative metrics on the marketing site may be illustrative of typical use cases. They are not guarantees of results for every institution.'
+          '6. Illustrative content',
+          'UI mockups, sample scenarios and roadmap items on the marketing site illustrate capabilities and direction. They are not guarantees of results for every institution. Commercial commitments are defined only in written agreements.'
         ),
         (
           '7. Limitation',
@@ -40,7 +40,7 @@ class DisclaimerPage extends StatelessWidget {
         ),
         (
           '8. Contact',
-          'Questions: support@asoltu.com · Sales: sales@asoltu.com'
+          'Questions: info@asoltu.com · Phone: +91-9462133119 · Office: ASOLTU Technologies, RMA, Ramganj Mandi, Rajasthan, India'
         ),
       ],
     );

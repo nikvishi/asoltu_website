@@ -26,7 +26,7 @@ class FinalCtaSection extends StatelessWidget {
         child: Column(
           children: [
             Text(
-              'Ready to modernize your school?',
+              'Ready to build with ASOLTU?',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                     color: Colors.white,
@@ -37,7 +37,7 @@ class FinalCtaSection extends StatelessWidget {
             ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 560),
               child: Text(
-                'Book a live demo with our team, or contact sales for multi-campus enterprise plans.',
+                'Book a demo of School ERP, schedule a meeting for custom software, or contact us for AI, mobile, web and cloud projects.',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: Colors.white.withValues(alpha: 0.86),
@@ -53,17 +53,36 @@ class FinalCtaSection extends StatelessWidget {
                 AsoltuButton(
                   label: 'Book Demo',
                   icon: Icons.calendar_month_outlined,
+                  onPressed: () => showBookDemoDialog(context),
+                ),
+                AsoltuButton(
+                  label: 'Schedule Meeting',
+                  variant: AsoltuButtonVariant.gold,
+                  icon: Icons.event_available_outlined,
                   onPressed: () => context.go(AppRoutes.contact),
                 ),
                 AsoltuButton(
                   label: 'Contact Sales',
-                  variant: AsoltuButtonVariant.gold,
+                  variant: AsoltuButtonVariant.secondary,
                   icon: Icons.support_agent_outlined,
-                  onPressed: () => launchUrl(
-                    Uri.parse(AppUrls.salesEmail),
-                  ),
+                  onPressed: () => launchUrl(Uri.parse(AppUrls.infoEmail)),
+                ),
+                AsoltuButton(
+                  label: 'Request Demo',
+                  variant: AsoltuButtonVariant.ghost,
+                  icon: Icons.rocket_launch_outlined,
+                  onPressed: () => context.go(AppRoutes.contact),
                 ),
               ],
+            ),
+            const SizedBox(height: 20),
+            Text(
+              '${AppUrls.infoEmailDisplay} · ${AppUrls.phoneDisplay}',
+              style: TextStyle(
+                color: Colors.white.withValues(alpha: 0.7),
+                fontWeight: FontWeight.w500,
+                fontSize: 13,
+              ),
             ),
           ],
         ),

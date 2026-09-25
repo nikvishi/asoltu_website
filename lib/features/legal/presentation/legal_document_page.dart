@@ -55,7 +55,7 @@ class LegalDocumentPage extends StatelessWidget {
               const SizedBox(height: 22),
             ],
             Text(
-              'Questions: support@asoltu.com',
+              'Questions: info@asoltu.com',
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                     color: AppColors.brandNavy,

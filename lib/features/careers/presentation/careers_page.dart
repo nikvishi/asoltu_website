@@ -100,7 +100,7 @@ class CareersPage extends StatelessWidget {
                   eyebrow: 'Careers',
                   title: 'Build the future of school software',
                   subtitle:
-                      'Join ASOLTU Tech Solutions — a team shipping reliable ERP for modern institutions.',
+                      'Join ASOLTU Technologies — a team shipping reliable ERP for modern institutions.',
                   center: true,
                 ),
                 const SizedBox(height: 20),

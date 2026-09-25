@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'core/constants/app_strings.dart';
 import 'core/routing/app_router.dart';
 import 'core/theme/app_theme.dart';
+import 'core/theme/theme_manager.dart';
 
 /// Root application widget for the ASOLTU corporate website.
 class AsoltuWebsiteApp extends StatelessWidget {
@@ -11,23 +12,28 @@ class AsoltuWebsiteApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: AppStrings.metaDefaultTitle,
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      themeMode: ThemeMode.light,
-      routerConfig: appRouter,
-      scrollBehavior: const _AsoltuScrollBehavior(),
-      builder: (context, child) {
-        final media = MediaQuery.of(context);
-        final scaler = media.textScaler.clamp(
-          minScaleFactor: 0.9,
-          maxScaleFactor: 1.25,
-        );
-        return MediaQuery(
-          data: media.copyWith(textScaler: scaler),
-          child: child ?? const SizedBox.shrink(),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: ThemeManager.themeModeNotifier,
+      builder: (context, themeMode, _) {
+        return MaterialApp.router(
+          title: AppStrings.metaDefaultTitle,
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
+          themeMode: themeMode,
+          routerConfig: appRouter,
+          scrollBehavior: const _AsoltuScrollBehavior(),
+          builder: (context, child) {
+            final media = MediaQuery.of(context);
+            final scaler = media.textScaler.clamp(
+              minScaleFactor: 0.9,
+              maxScaleFactor: 1.25,
+            );
+            return MediaQuery(
+              data: media.copyWith(textScaler: scaler),
+              child: child ?? const SizedBox.shrink(),
+            );
+          },
         );
       },
     );

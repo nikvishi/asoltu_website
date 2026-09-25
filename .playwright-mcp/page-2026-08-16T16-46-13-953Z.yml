@@ -1,0 +1,7 @@
+- generic [ref=e1]:
+  - link "Skip to main content" [ref=e2] [cursor=pointer]:
+    - /url: "#main"
+  - status "Loading ASOLTU website" [ref=e3]:
+    - img "ASOLTU Technologies logo mark" [ref=e4]: A
+    - generic [ref=e5]: Loading ASOLTU…
+  - main

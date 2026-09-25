@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
+
+/// Bundled in pubspec under `fonts:`. Previously pulled from Google at
+/// runtime, which delayed first paint on every visit.
+const String _fontFamily = 'PlusJakartaSans';
 
 /// Poppins type scale for Phase 4.2 marketing site.
 abstract final class AppTypography {
@@ -13,82 +16,82 @@ abstract final class AppTypography {
     final primary = dark ? AppColors.textOnNavy : AppColors.textPrimary;
     final secondary = dark ? AppColors.textMuted : AppColors.textSecondary;
 
-    return GoogleFonts.poppinsTextTheme(base).copyWith(
-      displayLarge: GoogleFonts.poppins(
+    return base.apply(fontFamily: _fontFamily).copyWith(
+      displayLarge: TextStyle(fontFamily: _fontFamily, 
         fontSize: 56,
         fontWeight: FontWeight.w700,
         letterSpacing: -1.2,
         height: 1.08,
         color: primary,
       ),
-      displayMedium: GoogleFonts.poppins(
+      displayMedium: TextStyle(fontFamily: _fontFamily, 
         fontSize: 44,
         fontWeight: FontWeight.w700,
         letterSpacing: -0.8,
         height: 1.12,
         color: primary,
       ),
-      displaySmall: GoogleFonts.poppins(
+      displaySmall: TextStyle(fontFamily: _fontFamily, 
         fontSize: 36,
         fontWeight: FontWeight.w700,
         letterSpacing: -0.5,
         height: 1.18,
         color: primary,
       ),
-      headlineLarge: GoogleFonts.poppins(
+      headlineLarge: TextStyle(fontFamily: _fontFamily, 
         fontSize: 32,
         fontWeight: FontWeight.w700,
         color: primary,
       ),
-      headlineMedium: GoogleFonts.poppins(
+      headlineMedium: TextStyle(fontFamily: _fontFamily, 
         fontSize: 28,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
-      headlineSmall: GoogleFonts.poppins(
+      headlineSmall: TextStyle(fontFamily: _fontFamily, 
         fontSize: 22,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
-      titleLarge: GoogleFonts.poppins(
+      titleLarge: TextStyle(fontFamily: _fontFamily, 
         fontSize: 20,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
-      titleMedium: GoogleFonts.poppins(
+      titleMedium: TextStyle(fontFamily: _fontFamily, 
         fontSize: 16,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
-      titleSmall: GoogleFonts.poppins(
+      titleSmall: TextStyle(fontFamily: _fontFamily, 
         fontSize: 14,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
-      bodyLarge: GoogleFonts.poppins(
+      bodyLarge: TextStyle(fontFamily: _fontFamily, 
         fontSize: 16,
         fontWeight: FontWeight.w400,
         height: 1.65,
         color: secondary,
       ),
-      bodyMedium: GoogleFonts.poppins(
+      bodyMedium: TextStyle(fontFamily: _fontFamily, 
         fontSize: 14,
         fontWeight: FontWeight.w400,
         height: 1.55,
         color: secondary,
       ),
-      bodySmall: GoogleFonts.poppins(
+      bodySmall: TextStyle(fontFamily: _fontFamily, 
         fontSize: 12,
         fontWeight: FontWeight.w400,
         height: 1.45,
         color: secondary,
       ),
-      labelLarge: GoogleFonts.poppins(
+      labelLarge: TextStyle(fontFamily: _fontFamily, 
         fontSize: 14,
         fontWeight: FontWeight.w600,
         color: primary,
       ),
-      labelMedium: GoogleFonts.poppins(
+      labelMedium: TextStyle(fontFamily: _fontFamily, 
         fontSize: 12,
         fontWeight: FontWeight.w600,
         letterSpacing: 0.2,

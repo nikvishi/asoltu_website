@@ -149,7 +149,7 @@ class DocumentationPage extends StatelessWidget {
                     AsoltuButton(
                       label: 'Browse resources',
                       variant: AsoltuButtonVariant.secondary,
-                      onPressed: () => context.go(AppRoutes.resources),
+                      onPressed: () => context.go(AppRoutes.downloads),
                     ),
                   ],
                 ),

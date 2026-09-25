@@ -12,7 +12,7 @@ class RefundPage extends StatelessWidget {
       sections: [
         (
           '1. Scope',
-          'This Refund Policy applies to paid ASOLTU School ERP subscriptions and professional services sold by ASOLTU Tech Solutions. Free demos and evaluation access are not billable and therefore not refundable.'
+          'This Refund Policy applies to paid ASOLTU School ERP subscriptions and professional services sold by ASOLTU Technologies. Free demos and evaluation access are not billable and therefore not refundable.'
         ),
         (
           '2. Subscription fees',
@@ -24,7 +24,7 @@ class RefundPage extends StatelessWidget {
         ),
         (
           '4. Duplicate or erroneous charges',
-          'If you were charged in error, contact sales@asoltu.com or support@asoltu.com within 14 days with payment references. Verified duplicate charges will be refunded.'
+          'If you were charged in error, contact info@asoltu.com or info@asoltu.com within 14 days with payment references. Verified duplicate charges will be refunded.'
         ),
         (
           '5. Process',
@@ -32,7 +32,7 @@ class RefundPage extends StatelessWidget {
         ),
         (
           '6. Contact',
-          'Billing questions: sales@asoltu.com'
+          'Billing questions: info@asoltu.com'
         ),
       ],
     );

@@ -14,11 +14,11 @@ import '../../features/legal/presentation/disclaimer_page.dart';
 import '../../features/legal/presentation/privacy_page.dart';
 import '../../features/legal/presentation/refund_page.dart';
 import '../../features/legal/presentation/terms_page.dart';
-import '../../features/pricing/presentation/pricing_page.dart';
-import '../../features/products/presentation/products_page.dart';
-import '../../features/resources/presentation/resources_page.dart';
-import '../../features/solutions/presentation/solutions_page.dart';
 import '../../features/support/presentation/support_page.dart';
+
+import '../../features/products/presentation/pages.dart';
+import '../../features/downloads/presentation/downloads_page.dart';
+
 import '../animations/page_transitions.dart';
 import '../seo/seo_config.dart';
 import '../seo/seo_controller.dart';
@@ -32,10 +32,8 @@ final GoRouter appRouter = GoRouter(
   initialLocation: AppRoutes.home,
   debugLogDiagnostics: false,
   redirect: (context, state) {
-    // Apply SEO for the matched path (non-blocking).
     final path = state.uri.path;
     final meta = SeoConfig.forPath(path);
-    // Schedule after frame so document is ready on web.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       SeoController.apply(meta);
     });
@@ -57,12 +55,31 @@ final GoRouter appRouter = GoRouter(
       },
       routes: [
         _page(AppRoutes.home, const HomePage()),
+        
+        // Products Hub
         _page(AppRoutes.products, const ProductsPage()),
-        _page(AppRoutes.solutions, const SolutionsPage()),
-        _page(AppRoutes.pricing, const PricingPage()),
-        _page(AppRoutes.about, const AboutPage()),
-        _page(AppRoutes.resources, const ResourcesPage()),
+        _page(AppRoutes.education, const EducationPage()),
+        _page(AppRoutes.software, const SoftwarePage()),
+        _page(AppRoutes.business, const BusinessPage()),
+
+        // Product Landings
+        _page(AppRoutes.examSeries, const ExamSeriesPage()),
+        _page(AppRoutes.schoolErp, const SchoolErpPage()),
+        _page(AppRoutes.downloadManager, const DownloadManagerPage()),
+        _page(AppRoutes.dataHop, const DataHopPage()),
+        _page(AppRoutes.asoltuRemote, const AsoltuRemotePage()),
+        _page(AppRoutes.pdfO, const PdfOPage()),
+        _page(AppRoutes.khataBahi, const KhataBahiPage()),
+        _page(AppRoutes.i2droid, const I2DroidPage()),
+        _page(AppRoutes.asoltuApp, const AsoltuAppPage()),
+
+        // Utilities
+        _page(AppRoutes.downloads, const DownloadsPage()),
         _page(AppRoutes.blog, const BlogPage()),
+        _page(AppRoutes.support, const SupportPage()),
+        _page(AppRoutes.about, const AboutPage()),
+        
+        // Legal & Misc
         _page(AppRoutes.contact, const ContactPage()),
         _page(AppRoutes.careers, const CareersPage()),
         _page(AppRoutes.privacy, const PrivacyPage()),
@@ -72,7 +89,7 @@ final GoRouter appRouter = GoRouter(
         _page(AppRoutes.dataProtection, const DataProtectionPage()),
         _page(AppRoutes.disclaimer, const DisclaimerPage()),
         _page(AppRoutes.documentation, const DocumentationPage()),
-        _page(AppRoutes.support, const SupportPage()),
+        
         GoRoute(
           path: AppRoutes.login,
           name: 'login',
@@ -87,7 +104,9 @@ final GoRouter appRouter = GoRouter(
 );
 
 GoRoute _page(String path, Widget child) {
-  final name = path == '/' ? 'home' : path.replaceAll('/', '');
+  final name = path == '/'
+      ? 'home'
+      : path.replaceAll(RegExp(r'^/|/$'), '').replaceAll('/', '-');
   return GoRoute(
     path: path,
     name: name,
@@ -152,10 +171,6 @@ class EmptyNotFound extends StatelessWidget {
                     OutlinedButton(
                       onPressed: () => context.go(AppRoutes.contact),
                       child: const Text('Contact'),
-                    ),
-                    OutlinedButton(
-                      onPressed: () => context.go(AppRoutes.products),
-                      child: const Text('Products'),
                     ),
                   ],
                 ),

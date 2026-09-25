@@ -6,23 +6,38 @@ abstract final class AppUrls {
   static const marketingSite = 'https://asoltu.com';
   static const erpPortal = 'https://erp.asoltu.com';
 
-  static const supportEmailDisplay = 'support@asoltu.com';
-  static const salesEmailDisplay = 'sales@asoltu.com';
-  static const careersEmailDisplay = 'careers@asoltu.com';
+  /// Primary public contact email (only address used on the marketing site).
+  static const infoEmailDisplay = 'info@asoltu.com';
+  static const infoEmail = 'mailto:info@asoltu.com';
 
-  static const supportEmail = 'mailto:support@asoltu.com';
-  static const salesEmail = 'mailto:sales@asoltu.com';
+  /// Legacy aliases — all resolve to [infoEmail] for existing call sites.
+  static const supportEmailDisplay = infoEmailDisplay;
+  static const salesEmailDisplay = infoEmailDisplay;
+  static const supportEmail = infoEmail;
+  static const salesEmail = infoEmail;
+
+  static const careersEmailDisplay = 'careers@asoltu.com';
   static const careersEmail = 'mailto:careers@asoltu.com';
 
-  /// Public contact numbers for marketing CTAs (update when numbers change).
-  static const phoneDisplay = '+91 99999 99999';
-  static const phoneTel = 'tel:+919999999999';
-  static const whatsApp = 'https://wa.me/919999999999';
+  /// Public contact numbers for marketing CTAs.
+  static const phoneDisplay = '+91-9462133119';
+  static const phoneTel = 'tel:+919462133119';
+  static const whatsApp = 'https://wa.me/919462133119';
 
-  static const businessHours = 'Mon–Fri, 10:00–18:00 IST';
-  static const officeAddress = 'India · Registered office details available on request';
+  static const businessHours = 'Monday to Saturday, 10:00 AM – 7:00 PM IST';
+  static const officeName = 'ASOLTU Technologies';
+  static const officeAddress =
+      'RMA, Ramganj Mandi, Rajasthan, India';
+  static const officeAddressFull =
+      'ASOLTU Technologies, RMA, Ramganj Mandi, Rajasthan, India';
+
+  /// Google Maps — Ramganj Mandi, Rajasthan.
   static const googleMapsSearch =
-      'https://www.google.com/maps/search/?api=1&query=ASOLTU+Tech+Solutions+India';
+      'https://www.google.com/maps/search/?api=1&query=Ramganj+Mandi+Rajasthan+India';
+  static const googleMapsDirections =
+      'https://www.google.com/maps/dir/?api=1&destination=Ramganj+Mandi+Rajasthan+India';
+  static const googleMapsEmbed =
+      'https://maps.google.com/maps?q=Ramganj+Mandi+Rajasthan+India&t=&z=14&ie=UTF8&iwloc=&output=embed';
 
   static const linkedIn = 'https://www.linkedin.com/company/asoltu';
   static const twitter = 'https://x.com/asoltu';

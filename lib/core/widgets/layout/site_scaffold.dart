@@ -1,19 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/app_colors.dart';
+import '../../theme/theme_manager.dart';
 import '../components/floating_contact_bar.dart';
 import 'site_header.dart';
 
-/// Shared marketing chrome: sticky header + expanded page slot + contact FABs.
-///
-/// Page content must supply its own scroll + footer via [MarketingScrollBody]
-/// (applied in the router page builder).
 class SiteScaffold extends StatefulWidget {
-  const SiteScaffold({
-    super.key,
-    required this.child,
-    this.showFooter = true,
-  });
+  const SiteScaffold({super.key, required this.child, this.showFooter = true});
 
   final Widget child;
   final bool showFooter;
@@ -26,9 +18,27 @@ class _SiteScaffoldState extends State<SiteScaffold> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _scrollController = ScrollController();
 
+  /// Drives the header's background. A ValueNotifier rather than setState:
+  /// setState here rebuilt the entire page on every scroll frame, which was
+  /// the main source of scroll jank.
+  final ValueNotifier<bool> _scrolled = ValueNotifier(false);
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    _scrolled.value = _scrollController.offset > 12;
+  }
+
   @override
   void dispose() {
-    _scrollController.dispose();
+    _scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
+    _scrolled.dispose();
     super.dispose();
   }
 
@@ -38,25 +48,38 @@ class _SiteScaffoldState extends State<SiteScaffold> {
       controller: _scrollController,
       child: Scaffold(
         key: _scaffoldKey,
-        backgroundColor: AppColors.backgroundLight,
+        backgroundColor: context.bgCanvas,
         drawer: const SiteMobileDrawer(),
         floatingActionButton: const FloatingContactBar(),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        body: Column(
+        body: Stack(
           children: [
-            Semantics(
-              container: true,
-              header: true,
-              label: 'Site header',
-              child: SiteHeader(
-                onOpenMenu: () => _scaffoldKey.currentState?.openDrawer(),
-              ),
-            ),
-            Expanded(
+            Positioned.fill(
               child: Semantics(
                 container: true,
                 label: 'Main content',
                 child: widget.child,
+              ),
+            ),
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              // Isolated so the header's own repaints never dirty the page
+              // behind it.
+              child: RepaintBoundary(
+                child: Semantics(
+                  container: true,
+                  header: true,
+                  label: 'Site header',
+                  child: ValueListenableBuilder<bool>(
+                    valueListenable: _scrolled,
+                    builder: (context, scrolled, _) => SiteHeader(
+                      scrolled: scrolled,
+                      onOpenMenu: () => _scaffoldKey.currentState?.openDrawer(),
+                    ),
+                  ),
+                ),
               ),
             ),
           ],

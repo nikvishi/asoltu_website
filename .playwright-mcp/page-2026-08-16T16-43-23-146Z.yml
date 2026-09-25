@@ -1,0 +1,239 @@
+- generic [ref=f2e13]:
+  - button "Skip to content" [ref=f2e15]
+  - generic [ref=f2e19]:
+    - banner [ref=f2e21]:
+      - generic [ref=f2e23]:
+        - button "Main menu" [ref=f2e25] [cursor=pointer]:
+          - img [ref=f2e28]: menu
+        - link "Google AdSense" [ref=f2e29] [cursor=pointer]:
+          - /url: /adsense/u/0/pub-9329352954738932/home
+      - heading "Home" [level=1] [ref=f2e32]
+      - generic [ref=f2e34]:
+        - button "Help" [ref=f2e36] [cursor=pointer]:
+          - img [ref=f2e39]: help
+        - button "Notifications" [ref=f2e43] [cursor=pointer]:
+          - generic [ref=f2e46]:
+            - img [ref=f2e48]: notifications
+            - generic: "1"
+        - button "Google Account" [ref=f2e53] [cursor=pointer]:
+          - img "Google Account (rokdiya.nikhil77@gmail.com)" [ref=f2e55]
+    - generic [ref=f2e56]:
+      - generic [ref=f2e57]:
+        - menu [ref=f2e58]:
+          - menuitem [ref=f2e61] [cursor=pointer]:
+            - img [ref=f2e65]: video_youtube
+        - menu [ref=f2e68]:
+          - menuitem [ref=f2e71] [cursor=pointer]:
+            - img [ref=f2e75]: home
+        - menu [ref=f2e76]:
+          - menuitem [ref=f2e79] [cursor=pointer]:
+            - img [ref=f2e83]: picture_in_picture
+        - menu [ref=f2e84]:
+          - menuitem [ref=f2e87] [cursor=pointer]:
+            - img [ref=f2e91]: drive_site
+        - menu [ref=f2e94]:
+          - menuitem [ref=f2e97] [cursor=pointer]
+        - menu [ref=f2e102]:
+          - menuitem [ref=f2e105] [cursor=pointer]:
+            - img [ref=f2e109]: not_interested
+        - menu [ref=f2e110]:
+          - menuitem [ref=f2e113] [cursor=pointer]:
+            - img [ref=f2e117]: assessment
+        - menu [ref=f2e118]:
+          - menuitem [disabled] [ref=f2e121]:
+            - img [ref=f2e125]: trending_up
+        - menu [ref=f2e126]:
+          - menuitem [ref=f2e129] [cursor=pointer]:
+            - img [ref=f2e133]: policy
+        - menu [ref=f2e136]:
+          - menuitem [disabled] [ref=f2e139]
+        - menu [ref=f2e144]:
+          - menuitem [ref=f2e147] [cursor=pointer]:
+            - img [ref=f2e151]: settings
+        - menu [ref=f2e152]:
+          - menuitem [ref=f2e155] [cursor=pointer]:
+            - img [ref=f2e159]: feedback
+      - navigation [ref=f2e160]:
+        - menu [ref=f2e161]:
+          - menuitem "AdSense for YouTube" [ref=f2e165] [cursor=pointer]:
+            - generic [ref=f2e166]:
+              - img [ref=f2e170]: video_youtube
+              - generic [ref=f2e171]: AdSense for YouTube
+          - menuitem "Home" [ref=f2e177] [cursor=pointer]:
+            - generic [ref=f2e178]:
+              - img [ref=f2e182]: home
+              - generic [ref=f2e183]: Home
+          - menuitem "Ads" [ref=f2e187] [cursor=pointer]:
+            - generic [ref=f2e188]:
+              - img [ref=f2e192]: picture_in_picture
+              - generic [ref=f2e193]: Ads
+          - menuitem "Sites" [ref=f2e197] [cursor=pointer]:
+            - generic [ref=f2e198]:
+              - img [ref=f2e202]: drive_site
+              - generic [ref=f2e203]: Sites
+          - menuitem "Privacy and messaging" [ref=f2e209] [cursor=pointer]
+          - menuitem "Brand safety" [ref=f2e219] [cursor=pointer]:
+            - generic [ref=f2e220]:
+              - img [ref=f2e223]: arrow_right
+              - img [ref=f2e226]: not_interested
+              - generic [ref=f2e227]: Brand safety
+          - menuitem "Reports" [ref=f2e231] [cursor=pointer]:
+            - generic [ref=f2e232]:
+              - img [ref=f2e236]: assessment
+              - generic [ref=f2e237]: Reports
+          - menuitem "Optimisation" [disabled] [ref=f2e241]:
+            - generic [ref=f2e242]:
+              - img [ref=f2e245]: arrow_right
+              - img [ref=f2e248]: trending_up
+              - generic [ref=f2e249]: Optimisation
+          - menuitem "Policy centre" [ref=f2e253] [cursor=pointer]:
+            - generic [ref=f2e254]:
+              - img [ref=f2e258]: policy
+              - generic [ref=f2e259]: Policy centre
+          - menuitem "Payments" [disabled] [ref=f2e265]:
+            - generic [ref=f2e266]:
+              - img [ref=f2e269]: arrow_right
+              - generic [ref=f2e273]: Payments
+          - menuitem "Account" [ref=f2e277] [cursor=pointer]:
+            - generic [ref=f2e278]:
+              - img [ref=f2e281]: arrow_right
+              - img [ref=f2e284]: settings
+              - generic [ref=f2e285]: Account
+          - menuitem "Feedback" [ref=f2e289] [cursor=pointer]:
+            - generic [ref=f2e290]:
+              - img [ref=f2e294]: feedback
+              - generic [ref=f2e295]: Feedback
+        - generic [ref=f2e298]:
+          - link "Privacy" [ref=f2e300] [cursor=pointer]:
+            - /url: https://www.google.com/intl/en_GB/policies/privacy
+          - link "Terms" [ref=f2e301] [cursor=pointer]:
+            - /url: https://adsense.google.com/adsense/terms?rc=IN&ce=19
+    - generic [ref=f2e302]:
+      - region "Notifications" [ref=f2e308]:
+        - generic [ref=f2e310]:
+          - generic [ref=f2e311]:
+            - button "Previous warning notification" [disabled] [ref=f2e312]:
+              - generic:
+                - generic:
+                  - img: chevron_left
+            - generic "Notification 1 of 2" [ref=f2e313]: 1 / 2
+            - button "Next warning notification" [ref=f2e314] [cursor=pointer]:
+              - img [ref=f2e317]: chevron_right
+          - generic [ref=f2e319]:
+            - img [ref=f2e321]: warning_amber
+            - generic [ref=f2e322]: Warning
+            - generic [ref=f2e323]:
+              - status [ref=f2e324]:
+                - generic [ref=f2e325]: To start earning from AdSense, you'll need to add your payment info and connect your site
+              - generic [ref=f2e328]:
+                - button "Activate your account" [ref=f2e330] [cursor=pointer]:
+                  - generic [ref=f2e331]: Action
+                - link "Learn more about activating your AdSense account, Opens in a new tab" [ref=f2e335] [cursor=pointer]:
+                  - generic [ref=f2e336]:
+                    - text: Learn more
+                    - img [ref=f2e338]: open_in_new
+                - button "Dismiss" [ref=f2e341] [cursor=pointer]
+      - main "Home" [ref=f2e345]:
+        - generic [ref=f2e402]:
+          - generic [ref=f2e405]:
+            - generic [ref=f2e406]:
+              - button "Cancel" [ref=f2e407] [cursor=pointer]:
+                - generic [ref=f2e409]: close
+              - heading "asoltu.com" [level=2] [ref=f2e410]
+              - generic [ref=f2e411]:
+                - generic [ref=f2e412]: Requires review
+                - button "Delete site" [ref=f2e413]:
+                  - img [ref=f2e417]: delete
+            - generic [ref=f2e421]:
+              - generic [ref=f2e423]:
+                - img "Your site needs review" [ref=f2e424]
+                - heading [level=3] [ref=f2e425]:
+                  - paragraph [ref=f2e426]: asoltu.com
+                  - paragraph [ref=f2e429]: Your site needs review
+              - generic [ref=f2e432]:
+                - button [expanded] [ref=f2e434] [cursor=pointer]:
+                  - generic [ref=f2e436]:
+                    - img [ref=f2e438]: code
+                    - heading [level=4] [ref=f2e439]: Verify site ownership
+                  - img [ref=f2e440]: expand_less
+                - region "Verify site ownership" [ref=f2e441]:
+                  - generic [ref=f2e444]:
+                    - generic [ref=f2e445]:
+                      - radiogroup [ref=f2e446]:
+                        - paragraph [ref=f2e447]: "Select verification method:"
+                        - generic [ref=f2e448] [cursor=pointer]:
+                          - radio "AdSense code snippet" [checked] [ref=f2e450]
+                          - generic [ref=f2e454]: AdSense code snippet
+                        - generic [ref=f2e455] [cursor=pointer]:
+                          - radio "Ads.txt snippet" [ref=f2e457]
+                          - generic [ref=f2e460]: Ads.txt snippet
+                        - generic [ref=f2e461] [cursor=pointer]:
+                          - radio "Meta tag" [ref=f2e463]
+                          - generic [ref=f2e466]: Meta tag
+                      - generic [ref=f2e467]:
+                        - text: To get your site ready to show ads, copy and paste this code between the <head></head> tags on each page of your site.
+                        - link "Learn more about the AdSense code., Opens in a new tab" [ref=f2e470] [cursor=pointer]:
+                          - /url: https://support.google.com/adsense/answer/9274634?hl=en_GB
+                          - text: Learn more about the AdSense code.
+                      - generic [ref=f2e471]:
+                        - generic [ref=f2e472]: Your AdSense code
+                        - textbox "Your AdSense code" [ref=f2e473]: <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9329352954738932" crossorigin="anonymous"></script>
+                        - button "Copy code to your clipboard" [ref=f2e474] [cursor=pointer]:
+                          - generic [ref=f2e475]: Copy
+                    - generic [ref=f2e477]:
+                      - checkbox "I've placed the code" [ref=f2e479] [cursor=pointer]:
+                        - img [ref=f2e482]: check_box_outline_blank
+                      - button "Verify" [ref=f2e485]
+              - button [disabled] [ref=f2e493]:
+                - generic [ref=f2e495]:
+                  - img [ref=f2e497]: fact_check
+                  - heading [level=4] [ref=f2e498]: Request review
+          - button "Add new site" [ref=f2e499]:
+            - img [ref=f2e503]: add
+            - generic [ref=f2e504]: New site
+          - generic [ref=f2e505]:
+            - generic [ref=f2e507]:
+              - generic:
+                - img: search
+              - generic: Search
+              - textbox "Search" [ref=f2e508]
+              - button "Open filter panel" [expanded] [ref=f2e510] [cursor=pointer]:
+                - generic [ref=f2e512]: filter_list
+            - region [ref=f2e515]:
+              - generic [ref=f2e519]:
+                - generic [ref=f2e520]: "Filters:"
+                - grid "Filters:" [ref=f2e521]:
+                  - row [ref=f2e522]:
+                    - gridcell "Ready" [ref=f2e523] [cursor=pointer]
+                    - gridcell "Getting ready" [ref=f2e525] [cursor=pointer]
+                    - gridcell "Requires review" [ref=f2e527] [cursor=pointer]
+                    - gridcell "Needs attention" [ref=f2e529] [cursor=pointer]
+            - generic [ref=f2e535]:
+              - generic [ref=f2e536]:
+                - generic [ref=f2e537]: "Go to page:"
+                - combobox "Enter a page number to go to" [ref=f2e543]
+                - text: of 1
+              - generic [ref=f2e544]:
+                - generic [ref=f2e545]: Show rows
+                - button "Show rows 50 selected." [ref=f2e548] [cursor=pointer]:
+                  - generic [ref=f2e549]: "50"
+                  - img [ref=f2e551]: arrow_drop_down
+              - generic [ref=f2e552]:
+                - generic [ref=f2e553]: 1 - 1 of 1
+                - generic [ref=f2e555]:
+                  - button "Go to the first page" [disabled] [ref=f2e556]:
+                    - generic:
+                      - generic:
+                        - img: first_page
+                  - button "Go to the previous page" [disabled] [ref=f2e557]:
+                    - generic:
+                      - generic:
+                        - img: chevron_left
+                  - button "Go to the next page" [disabled] [ref=f2e558]:
+                    - generic:
+                      - generic:
+                        - img: chevron_right
+                  - button "Go to the last page" [disabled] [ref=f2e559]:
+                    - generic:
+                      - generic:
+                        - img: last_page

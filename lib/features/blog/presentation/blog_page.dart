@@ -22,71 +22,72 @@ class _BlogPageState extends State<BlogPage> {
   final _email = TextEditingController();
   bool _subscribed = false;
 
+  /// SEO-ready blog taxonomy (categories for discovery + internal linking).
   static const _categories = [
     'All',
-    'ERP',
-    'AI',
+    'School ERP',
     'Education',
     'Technology',
-    'Product Updates',
-    'School Management',
+    'AI',
+    'Software Development',
+    'Cloud',
   ];
 
   static const _posts = <(String, String, String, String, String)>[
     (
       'Featured',
-      'ERP',
-      'How modern school ERPs replace spreadsheet chaos',
-      'A practical look at unifying admissions, fees, attendance, and parent communication on one system of record.',
+      'School ERP',
+      'How modern School ERP software replaces spreadsheet chaos',
+      'A practical look at unifying admissions, fees, attendance and parent communication on one student management system of record.',
       '12 min read',
     ),
     (
       'Article',
-      'School Management',
+      'Education',
       'Five fee-collection habits that improve every term',
-      'Process patterns finance teams can adopt without pressuring families unfairly.',
+      'Process patterns finance teams can adopt without pressuring families unfairly — with school administration software support.',
       '6 min read',
     ),
     (
       'Article',
       'AI',
       'AI reports principals actually use',
-      'How to demand decision-ready summaries instead of decorative dashboards.',
+      'How to demand decision-ready AI solutions instead of decorative dashboards in school management software.',
       '7 min read',
     ),
     (
       'Article',
       'Education',
       'What school leaders want from digital transformation',
-      'Reliability, parent trust, and staff adoption — beyond shiny portals.',
+      'Reliability, parent trust and staff adoption — beyond shiny portals for CBSE and RBSE schools.',
       '8 min read',
     ),
     (
       'Article',
       'Technology',
       'Why multi-tenant design matters for education groups',
-      'Isolation, scale, and operational clarity when you run more than one campus.',
+      'Isolation, scale and operational clarity when you run more than one campus on cloud School ERP.',
       '9 min read',
     ),
     (
       'Article',
-      'Product Updates',
-      'What 2026 readiness means for ASOLTU campuses',
-      'Enterprise onboarding, marketing clarity, and production hardening themes.',
+      'Cloud',
+      'Cloud solutions for school automation in India',
+      'How secure cloud infrastructure supports multi-campus School ERP, backups and remote access.',
       '5 min read',
     ),
     (
       'Article',
-      'School Management',
+      'Education',
       'Attendance discipline that parents can trust',
-      'Daily habits and software patterns that reduce absence blind spots.',
+      'Daily habits and school automation software patterns that reduce absence blind spots.',
       '6 min read',
     ),
     (
       'Article',
-      'ERP',
-      'Parent apps, teacher portals, and the connected campus',
-      'Why stakeholder experiences succeed only when modules share one truth.',
+      'Software Development',
+      'Flutter app development for parent and teacher portals',
+      'Why stakeholder mobile experiences succeed only when modules share one truth with the core ERP.',
       '7 min read',
     ),
   ];
@@ -118,9 +119,9 @@ class _BlogPageState extends State<BlogPage> {
                 SizedBox(height: 20),
                 SectionHeading(
                   eyebrow: 'Blog',
-                  title: 'Insights for education leaders',
+                  title: 'School ERP & technology insights',
                   subtitle:
-                      'Sample articles across ERP, AI, education, technology, product updates, and school management.',
+                      'Topics we write about: School ERP, Education Technology, AI in Education, School Automation, Flutter, Cloud, Software Development and Business Automation. Full articles publish here as they are authored.',
                   center: true,
                 ),
               ],
@@ -296,7 +297,7 @@ class _BlogPageState extends State<BlogPage> {
                 TextButton(
                   onPressed: () => launchUrl(Uri.parse(AppUrls.salesEmail)),
                   child: const Text(
-                    'Prefer email? sales@asoltu.com',
+                    'Prefer email? info@asoltu.com',
                     style: TextStyle(color: Colors.white70),
                   ),
                 ),

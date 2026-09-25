@@ -42,6 +42,7 @@ class _ContactPageState extends State<ContactPage> {
     'College',
     'University',
     'Education Group',
+    'Business',
     'Other',
   ];
 
@@ -80,7 +81,7 @@ class _ContactPageState extends State<ContactPage> {
       if (mounted) {
         setState(() {
           _error =
-              'Unable to send right now. Please email sales@asoltu.com or try again.';
+              'Unable to send right now. Please email ${AppUrls.infoEmailDisplay} or call ${AppUrls.phoneDisplay}.';
         });
       }
     } finally {
@@ -103,7 +104,7 @@ class _ContactPageState extends State<ContactPage> {
                   eyebrow: 'Contact',
                   title: 'Talk to the ASOLTU team',
                   subtitle:
-                      'ASOLTU Tech Solutions helps schools, coaching institutes, colleges, and education groups modernize operations with a secure multi-tenant ERP. Request a demo, ask about pricing, or get onboarding guidance.',
+                      'ASOLTU Technologies builds intelligent software for schools and businesses. Request a School ERP demo, discuss custom software, or ask about AI, mobile, web and cloud projects.',
                   center: true,
                 ),
               ],
@@ -553,74 +554,125 @@ class _ContactAside extends StatelessWidget {
                     ),
               ),
               const SizedBox(height: 14),
-              _line(Icons.business_outlined, 'ASOLTU Tech Solutions', null),
-              _line(Icons.email_outlined, AppUrls.salesEmailDisplay, AppUrls.salesEmail),
-              _line(Icons.support_agent_outlined, AppUrls.supportEmailDisplay, AppUrls.supportEmail),
+              _line(Icons.business_outlined, AppUrls.officeName, null),
+              _line(Icons.email_outlined, AppUrls.infoEmailDisplay, AppUrls.infoEmail),
               _line(Icons.phone_outlined, AppUrls.phoneDisplay, AppUrls.phoneTel),
               _line(Icons.schedule_outlined, AppUrls.businessHours, null),
-              _line(Icons.location_on_outlined, AppUrls.officeAddress, null),
+              _line(Icons.location_on_outlined, AppUrls.officeAddressFull, null),
               _line(Icons.language, 'erp.asoltu.com', AppUrls.erpPortal),
             ],
           ),
         ),
+        const SizedBox(height: 12),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            AsoltuButton(
+              label: 'Call Now',
+              icon: Icons.call_rounded,
+              onPressed: () => launchUrl(
+                Uri.parse(AppUrls.phoneTel),
+                mode: LaunchMode.externalApplication,
+              ),
+            ),
+            AsoltuButton(
+              label: 'Email Us',
+              variant: AsoltuButtonVariant.secondary,
+              icon: Icons.email_outlined,
+              onPressed: () => launchUrl(Uri.parse(AppUrls.infoEmail)),
+            ),
+            AsoltuButton(
+              label: 'WhatsApp',
+              variant: AsoltuButtonVariant.secondary,
+              icon: Icons.chat_rounded,
+              onPressed: () => launchUrl(
+                Uri.parse(AppUrls.whatsApp),
+                mode: LaunchMode.externalApplication,
+              ),
+            ),
+          ],
+        ),
         const SizedBox(height: 16),
-        Container(
-          height: 280,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: AppColors.brandNavy.withValues(alpha: 0.04),
-            borderRadius: BorderRadius.circular(AppRadius.lg),
-            border: Border.all(color: AppColors.borderLight),
-          ),
-          clipBehavior: Clip.antiAlias,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              CustomPaint(painter: _MapGridPainter()),
-              Center(
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.95),
-                    borderRadius: BorderRadius.circular(AppRadius.lg),
-                    boxShadow: AppShadows.soft,
-                  ),
-                  child: const Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.location_on, color: AppColors.accentBlue),
-                      SizedBox(height: 6),
-                      Text(
-                        'ASOLTU Office',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.brandNavy,
+        Semantics(
+          label: 'Map of Ramganj Mandi, Rajasthan — ASOLTU Technologies office area',
+          child: Container(
+            height: 280,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: AppColors.brandNavy.withValues(alpha: 0.04),
+              borderRadius: BorderRadius.circular(AppRadius.lg),
+              border: Border.all(color: AppColors.borderLight),
+            ),
+            clipBehavior: Clip.antiAlias,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                // Responsive map preview — opens full Google Maps for directions.
+                CustomPaint(painter: _MapGridPainter()),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.all(16),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 14,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.96),
+                      borderRadius: BorderRadius.circular(AppRadius.lg),
+                      boxShadow: AppShadows.soft,
+                    ),
+                    child: const Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(Icons.location_on, color: AppColors.accentBlue),
+                        SizedBox(height: 6),
+                        Text(
+                          'ASOLTU Technologies',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.brandNavy,
+                          ),
                         ),
-                      ),
-                      Text(
-                        AppUrls.officeAddress,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: AppColors.textMuted,
+                        SizedBox(height: 4),
+                        Text(
+                          'RMA, Ramganj Mandi, Rajasthan, India',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: AppColors.textMuted,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         const SizedBox(height: 10),
-        TextButton.icon(
-          onPressed: () => launchUrl(
-            Uri.parse(AppUrls.googleMapsSearch),
-            mode: LaunchMode.externalApplication,
-          ),
-          icon: const Icon(Icons.open_in_new, size: 16),
-          label: const Text('Open in Google Maps'),
+        Wrap(
+          spacing: 8,
+          runSpacing: 8,
+          children: [
+            TextButton.icon(
+              onPressed: () => launchUrl(
+                Uri.parse(AppUrls.googleMapsSearch),
+                mode: LaunchMode.externalApplication,
+              ),
+              icon: const Icon(Icons.map_outlined, size: 16),
+              label: const Text('Open Google Maps'),
+            ),
+            TextButton.icon(
+              onPressed: () => launchUrl(
+                Uri.parse(AppUrls.googleMapsDirections),
+                mode: LaunchMode.externalApplication,
+              ),
+              icon: const Icon(Icons.directions_outlined, size: 16),
+              label: const Text('Get Directions'),
+            ),
+          ],
         ),
       ],
     );

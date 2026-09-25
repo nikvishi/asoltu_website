@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_colors.dart';
 import 'app_radius.dart';
@@ -35,7 +34,7 @@ abstract final class AppTheme {
         elevation: 0,
         scrolledUnderElevation: 0.5,
         centerTitle: false,
-        titleTextStyle: GoogleFonts.poppins(
+        titleTextStyle: const TextStyle(fontFamily: 'PlusJakartaSans', 
           fontSize: 18,
           fontWeight: FontWeight.w700,
           color: AppColors.textPrimary,
@@ -59,7 +58,7 @@ abstract final class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.lg),
           ),
-          textStyle: GoogleFonts.poppins(
+          textStyle: const TextStyle(fontFamily: 'PlusJakartaSans', 
             fontWeight: FontWeight.w600,
             fontSize: 14,
           ),
@@ -74,7 +73,7 @@ abstract final class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppRadius.lg),
           ),
-          textStyle: GoogleFonts.poppins(
+          textStyle: const TextStyle(fontFamily: 'PlusJakartaSans', 
             fontWeight: FontWeight.w600,
             fontSize: 14,
           ),
@@ -83,7 +82,7 @@ abstract final class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: AppColors.brandNavy,
-          textStyle: GoogleFonts.poppins(
+          textStyle: const TextStyle(fontFamily: 'PlusJakartaSans', 
             fontWeight: FontWeight.w600,
             fontSize: 14,
           ),

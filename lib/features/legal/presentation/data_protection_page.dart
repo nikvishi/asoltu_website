@@ -12,7 +12,7 @@ class DataProtectionPage extends StatelessWidget {
       sections: [
         (
           '1. Purpose',
-          'This Data Protection statement explains how ASOLTU Tech Solutions (“ASOLTU”) protects personal and institutional data processed through asoltu.com (marketing) and erp.asoltu.com (product). It complements our Privacy Policy and Terms of Service.'
+          'This Data Protection statement explains how ASOLTU Technologies (“ASOLTU”) protects personal and institutional data processed through asoltu.com (marketing) and erp.asoltu.com (product). It complements our Privacy Policy and Terms of Service.'
         ),
         (
           '2. Separation of marketing and product data',
@@ -44,7 +44,7 @@ class DataProtectionPage extends StatelessWidget {
         ),
         (
           '9. Your rights & requests',
-          'Depending on applicable law, individuals may request access, correction, or deletion of personal data. Institution administrators should raise product data requests through their authorized channels. Privacy and data-protection requests: support@asoltu.com.'
+          'Depending on applicable law, individuals may request access, correction, or deletion of personal data. Institution administrators should raise product data requests through their authorized channels. Privacy and data-protection requests: info@asoltu.com.'
         ),
         (
           '10. Breach notification',
@@ -56,7 +56,7 @@ class DataProtectionPage extends StatelessWidget {
         ),
         (
           '12. Contact',
-          'ASOLTU Tech Solutions — data protection enquiries: support@asoltu.com · sales enquiries: sales@asoltu.com'
+          'ASOLTU Technologies — data protection enquiries: info@asoltu.com · sales enquiries: info@asoltu.com'
         ),
       ],
     );

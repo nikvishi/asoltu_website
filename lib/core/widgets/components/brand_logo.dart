@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 import '../../constants/app_assets.dart';
 import '../../constants/app_strings.dart';
 import '../../routing/route_names.dart';
-import '../../theme/app_colors.dart';
+import '../../theme/theme_manager.dart';
 
-/// ASOLTU wordmark / mark used in header and footer.
+/// ASOLTU mark and wordmark, used in the header and footer.
 class BrandLogo extends StatelessWidget {
   const BrandLogo({
     super.key,
@@ -21,8 +21,6 @@ class BrandLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textColor = onNavy ? Colors.white : AppColors.brandNavy;
-
     return Semantics(
       label: '${AppStrings.brandName} home',
       button: true,
@@ -32,30 +30,34 @@ class BrandLogo extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              width: height,
-              height: height,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: AppColors.accentGold.withValues(alpha: 0.5),
-                ),
-                color: onNavy
-                    ? Colors.white.withValues(alpha: 0.1)
-                    : AppColors.surfaceMuted,
-              ),
-              clipBehavior: Clip.antiAlias,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(height * 0.26),
               child: Image.asset(
-                AppAssets.logo,
+                // The webp decoded inconsistently on web and left an empty
+                // box in the header; the PNG is reliable.
+                AppAssets.logoPng,
+                width: height,
+                height: height,
                 fit: BoxFit.cover,
-                cacheWidth: 96,
-                cacheHeight: 96,
                 filterQuality: FilterQuality.medium,
-                semanticLabel: '${AppStrings.brandName} logo',
-                errorBuilder: (_, _, _) => Icon(
-                  Icons.school_rounded,
-                  size: height * 0.55,
-                  color: onNavy ? AppColors.accentGold : AppColors.brandNavy,
+                gaplessPlayback: true,
+                semanticLabel: 'ASOLTU logo',
+                errorBuilder: (context, error, stack) => Container(
+                  width: height,
+                  height: height,
+                  decoration: BoxDecoration(
+                    gradient: context.accentGradient,
+                    borderRadius: BorderRadius.circular(height * 0.26),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    'A',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: height * 0.55,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -64,10 +66,10 @@ class BrandLogo extends StatelessWidget {
               Text(
                 AppStrings.brandName,
                 style: TextStyle(
-                  fontSize: height * 0.48,
+                  fontSize: height * 0.46,
                   fontWeight: FontWeight.w900,
-                  letterSpacing: 1.1,
-                  color: textColor,
+                  letterSpacing: 1.0,
+                  color: onNavy ? Colors.white : context.textPrimary,
                 ),
               ),
             ],

@@ -73,7 +73,7 @@ class _SupportPageState extends State<SupportPage> {
     await Future<void>.delayed(const Duration(milliseconds: 400));
     final uri = Uri(
       scheme: 'mailto',
-      path: 'support@asoltu.com',
+      path: 'info@asoltu.com',
       queryParameters: {
         'subject': '[$_priority] ${_subject.text}',
         'body':
@@ -126,7 +126,7 @@ class _SupportPageState extends State<SupportPage> {
                 _ActionCard(
                   icon: Icons.email_outlined,
                   title: 'Email support',
-                  body: 'support@asoltu.com',
+                  body: 'info@asoltu.com',
                   action: 'Email us',
                   onTap: () => launchUrl(Uri.parse(AppUrls.supportEmail)),
                 ),
@@ -263,7 +263,7 @@ class _SupportPageState extends State<SupportPage> {
               ),
               const SizedBox(height: 16),
               for (final step in [
-                ('1 · Submit', 'Use the ticket form or email support@asoltu.com with school name, priority, and details.'),
+                ('1 · Submit', 'Use the ticket form or email info@asoltu.com with school name, priority, and details.'),
                 ('2 · Triage', 'We classify by priority and route to product specialists during business hours.'),
                 ('3 · Resolve', 'We respond with guidance, documentation links, or escalation for production issues.'),
                 ('4 · Follow-up', 'Professional and Enterprise plans receive tighter follow-up and success paths.'),

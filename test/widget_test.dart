@@ -6,17 +6,23 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Homepage boots with marketing shell', (tester) async {
+    tester.view.physicalSize = const Size(1440, 8000);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+
     await tester.pumpWidget(const AsoltuWebsiteApp());
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 100));
 
     expect(find.textContaining('ASOLTU'), findsWidgets);
-    expect(find.text('Start Free Demo'), findsWidgets);
+    expect(find.text('Book Demo'), findsWidgets);
+    expect(find.textContaining('Building Intelligent Software'), findsWidgets);
   });
 
   testWidgets('Primary routes resolve without crash', (tester) async {
     // Tall desktop surface so long marketing pages do not hit test-viewport overflows.
-    tester.view.physicalSize = const Size(1440, 5000);
+    tester.view.physicalSize = const Size(1440, 8000);
     tester.view.devicePixelRatio = 1.0;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
@@ -27,10 +33,8 @@ void main() {
 
     for (final path in [
       AppRoutes.products,
-      AppRoutes.solutions,
-      AppRoutes.pricing,
       AppRoutes.about,
-      AppRoutes.resources,
+      AppRoutes.downloads,
       AppRoutes.blog,
       AppRoutes.contact,
       AppRoutes.careers,
@@ -38,6 +42,8 @@ void main() {
       AppRoutes.documentation,
       AppRoutes.privacy,
       AppRoutes.disclaimer,
+      '/modules/school-erp',
+      '/services/flutter-development',
     ]) {
       appRouter.go(path);
       await tester.pump();

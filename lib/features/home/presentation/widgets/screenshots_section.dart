@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_shadows.dart';
 import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/widgets/widgets.dart';
-import 'floating_soft_motion.dart';
 
-/// Product showcase — Desktop / Tablet / Mobile with floating cards.
+/// Product showcase — clean UI mockups until real screenshots replace them.
 class ScreenshotsSection extends StatefulWidget {
   const ScreenshotsSection({super.key});
 
@@ -19,10 +17,14 @@ class ScreenshotsSection extends StatefulWidget {
 class _ScreenshotsSectionState extends State<ScreenshotsSection> {
   int _index = 0;
 
-  static const _devices = [
-    (Icons.desktop_windows_outlined, 'Desktop', 'Admin control plane'),
-    (Icons.tablet_mac_outlined, 'Tablet', 'Campus operations'),
-    (Icons.phone_iphone_outlined, 'Mobile', 'Parent & teacher apps'),
+  static const _views = [
+    (Icons.desktop_windows_outlined, 'Desktop Dashboard', 'Admin control plane'),
+    (Icons.person_outline, 'Teacher App', 'Classroom operations'),
+    (Icons.family_restroom, 'Parent App', 'Family transparency'),
+    (Icons.backpack_outlined, 'Student App', 'Learner self-serve'),
+    (Icons.assessment_outlined, 'Reports', 'Operational reporting'),
+    (Icons.insights_outlined, 'Analytics', 'Leadership insights'),
+    (Icons.dark_mode_outlined, 'Dark Mode', 'Focus-friendly UI'),
   ];
 
   @override
@@ -33,27 +35,28 @@ class _ScreenshotsSectionState extends State<ScreenshotsSection> {
           const FadeIn(
             child: SectionHeading(
               eyebrow: 'Product showcase',
-              title: 'Designed for every screen',
+              title: 'Designed for every role and screen',
               subtitle:
-                  'A polished experience across desktop, tablet, and mobile — without sacrificing power.',
+                  'Clean UI mockups of the ASOLTU experience — real product screenshots will replace these as available.',
               center: true,
             ),
           ),
           const SizedBox(height: 28),
           Wrap(
-            spacing: 10,
-            runSpacing: 10,
+            spacing: 8,
+            runSpacing: 8,
             alignment: WrapAlignment.center,
-            children: List.generate(_devices.length, (i) {
+            children: List.generate(_views.length, (i) {
               final active = i == _index;
               return ChoiceChip(
-                label: Text(_devices[i].$2),
+                label: Text(_views[i].$2),
                 selected: active,
                 onSelected: (_) => setState(() => _index = i),
                 selectedColor: AppColors.accentBlue.withValues(alpha: 0.12),
                 labelStyle: TextStyle(
                   fontWeight: FontWeight.w600,
                   color: active ? AppColors.accentBlue : AppColors.brandNavy,
+                  fontSize: 12,
                 ),
                 side: BorderSide(
                   color: active
@@ -66,15 +69,14 @@ class _ScreenshotsSectionState extends State<ScreenshotsSection> {
           ),
           const SizedBox(height: AppSpacing.xxl),
           AnimatedSwitcher(
-            duration: const Duration(milliseconds: 320),
-            switchInCurve: Curves.easeOutCubic,
-            switchOutCurve: Curves.easeInCubic,
-            child: _DeviceShowcase(
+            duration: const Duration(milliseconds: 280),
+            child: _MockFrame(
               key: ValueKey(_index),
-              icon: _devices[_index].$1,
-              title: _devices[_index].$2,
-              subtitle: _devices[_index].$3,
-              compact: _index == 2,
+              icon: _views[_index].$1,
+              title: _views[_index].$2,
+              subtitle: _views[_index].$3,
+              dark: _index == 6,
+              compact: _index == 1 || _index == 2 || _index == 3,
             ),
           ),
         ],
@@ -83,170 +85,218 @@ class _ScreenshotsSectionState extends State<ScreenshotsSection> {
   }
 }
 
-class _DeviceShowcase extends StatelessWidget {
-  const _DeviceShowcase({
+class _MockFrame extends StatelessWidget {
+  const _MockFrame({
     super.key,
     required this.icon,
     required this.title,
     required this.subtitle,
+    this.dark = false,
     this.compact = false,
   });
 
   final IconData icon;
   final String title;
   final String subtitle;
+  final bool dark;
   final bool compact;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 380,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Container(
-            width: compact ? 220 : double.infinity,
-            constraints: BoxConstraints(maxWidth: compact ? 260 : 820),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(AppRadius.lg),
-              border: Border.all(color: AppColors.borderLight),
-              boxShadow: AppShadows.elevated,
+    final bg = dark ? AppColors.backgroundDark : Colors.white;
+    final fg = dark ? Colors.white : AppColors.brandNavy;
+    final muted = dark ? Colors.white70 : AppColors.textSecondary;
+    final panel = dark ? AppColors.surfaceDark : AppColors.surfaceMuted;
+
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: compact ? 380 : 880),
+        child: Container(
+          height: compact ? 520 : 420,
+          decoration: BoxDecoration(
+            color: bg,
+            borderRadius: BorderRadius.circular(AppRadius.xl),
+            border: Border.all(
+              color: dark ? AppColors.borderDark : AppColors.borderLight,
             ),
-            child: Column(
-              children: [
-                Container(
-                  height: 44,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
-                  decoration: const BoxDecoration(
-                    color: AppColors.surfaceMuted,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(AppRadius.lg),
+            boxShadow: AppShadows.elevated,
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            children: [
+              Container(
+                height: 48,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: dark
+                      ? Colors.white.withValues(alpha: 0.04)
+                      : AppColors.surfaceSoft,
+                  border: Border(
+                    bottom: BorderSide(
+                      color: dark ? AppColors.borderDark : AppColors.borderLight,
                     ),
                   ),
+                ),
+                child: Row(
+                  children: [
+                    Icon(icon, size: 18, color: AppColors.accentBlue),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            title,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              color: fg,
+                              fontSize: 13,
+                            ),
+                          ),
+                          Text(
+                            subtitle,
+                            style: TextStyle(color: muted, fontSize: 11),
+                          ),
+                        ],
+                      ),
+                    ),
+                    if (dark)
+                      const Icon(Icons.dark_mode, size: 16, color: AppColors.accentGold),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
                   child: Row(
                     children: [
-                      Icon(icon, size: 18, color: AppColors.accentBlue),
-                      const SizedBox(width: 8),
-                      Text(
-                        '$title · $subtitle',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 13,
-                          color: AppColors.brandNavy,
+                      if (!compact)
+                        Container(
+                          width: 160,
+                          margin: const EdgeInsets.only(right: 14),
+                          padding: const EdgeInsets.all(12),
+                          decoration: BoxDecoration(
+                            color: panel,
+                            borderRadius: BorderRadius.circular(AppRadius.lg),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              for (final item in [
+                                'Dashboard',
+                                'Students',
+                                'Fees',
+                                'Attendance',
+                                'Reports',
+                              ])
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: Text(
+                                    item,
+                                    style: TextStyle(
+                                      color: muted,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12,
+                                    ),
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      Expanded(
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                width: double.infinity,
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  color: panel,
+                                  borderRadius:
+                                      BorderRadius.circular(AppRadius.lg),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      title,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w700,
+                                        color: fg,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Illustrative mockup of the $title experience. Real screenshots will appear here when available.',
+                                      style: TextStyle(
+                                        color: muted,
+                                        height: 1.45,
+                                        fontSize: 13,
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    for (var i = 0; i < 3; i++)
+                                      FractionallySizedBox(
+                                        widthFactor: (1 - i * 0.15).clamp(0.55, 1.0),
+                                        alignment: Alignment.centerLeft,
+                                        child: Container(
+                                          height: 10,
+                                          margin: const EdgeInsets.only(bottom: 10),
+                                          decoration: BoxDecoration(
+                                            color: AppColors.accentBlue
+                                                .withValues(alpha: 0.12 + i * 0.05),
+                                            borderRadius: BorderRadius.circular(99),
+                                          ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              children: [
+                                Expanded(child: _tile(panel, fg, 'Metric A')),
+                                const SizedBox(width: 10),
+                                Expanded(child: _tile(panel, fg, 'Metric B')),
+                                const SizedBox(width: 10),
+                                Expanded(child: _tile(panel, fg, 'Metric C')),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ),
-                Expanded(
-                  child: Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          AppColors.brandNavy.withValues(alpha: 0.95),
-                          AppColors.accentBlue.withValues(alpha: 0.78),
-                        ],
-                      ),
-                      borderRadius: BorderRadius.circular(AppRadius.md),
-                    ),
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: List.generate(
-                            3,
-                            (i) => Expanded(
-                              child: Container(
-                                height: 54,
-                                margin: EdgeInsets.only(right: i < 2 ? 8 : 0),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withValues(alpha: 0.14),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        Expanded(
-                          child: Container(
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Colors.white.withValues(alpha: 0.12),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            left: 12,
-            top: 70,
-            child: FloatingSoftMotion(
-              amplitude: 6,
-              child: _MiniBadge(
-                icon: Icons.notifications_active_outlined,
-                label: 'Alerts live',
               ),
-            ).animate().fadeIn(delay: 120.ms),
+            ],
           ),
-          Positioned(
-            right: 12,
-            bottom: 60,
-            child: FloatingSoftMotion(
-              amplitude: 8,
-              duration: const Duration(milliseconds: 3000),
-              child: _MiniBadge(
-                icon: Icons.verified_user_outlined,
-                label: 'Secure RBAC',
-              ),
-            ).animate().fadeIn(delay: 180.ms),
-          ),
-        ],
+        ),
       ),
     );
   }
-}
 
-class _MiniBadge extends StatelessWidget {
-  const _MiniBadge({required this.icon, required this.label});
-  final IconData icon;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _tile(Color panel, Color fg, String label) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+      height: 64,
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.97),
-        borderRadius: BorderRadius.circular(AppRadius.lg),
-        border: Border.all(color: AppColors.borderLight),
-        boxShadow: AppShadows.soft,
+        color: panel,
+        borderRadius: BorderRadius.circular(AppRadius.md),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 16, color: AppColors.accentBlue),
-          const SizedBox(width: 8),
-          Text(
-            label,
-            style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 12,
-              color: AppColors.brandNavy,
-            ),
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Text(
+          label,
+          style: TextStyle(
+            color: fg.withValues(alpha: 0.7),
+            fontWeight: FontWeight.w600,
+            fontSize: 12,
           ),
-        ],
+        ),
       ),
     );
   }

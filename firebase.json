@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "website",
+      "target": "asoltu-com",
       "public": "build/web",
       "ignore": [
         "firebase.json",
@@ -16,20 +16,38 @@
       ],
       "headers": [
         {
-          "source": "/main.dart.js",
+          "source": "/index.html",
           "headers": [
             {
               "key": "Cache-Control",
-              "value": "public, max-age=3600, must-revalidate"
+              "value": "no-cache, must-revalidate"
             }
           ]
         },
         {
-          "source": "/flutter_bootstrap.js",
+          "source": "/flutter_service_worker.js",
           "headers": [
             {
               "key": "Cache-Control",
-              "value": "public, max-age=3600, must-revalidate"
+              "value": "no-cache, must-revalidate"
+            }
+          ]
+        },
+        {
+          "source": "/version.json",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "no-cache, must-revalidate"
+            }
+          ]
+        },
+        {
+          "source": "**/*.@(js|wasm|ttf|otf|woff|woff2|json|bin|symbols)",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=604800"
             }
           ]
         },
@@ -52,7 +70,7 @@
           ]
         },
         {
-          "source": "**/*.@(js|css|wasm|woff2|webp|png|jpg|jpeg|svg)",
+          "source": "**/*.@(webp|png|jpg|jpeg|svg|ico)",
           "headers": [
             {
               "key": "Cache-Control",
@@ -61,11 +79,37 @@
           ]
         },
         {
-          "source": "/index.html",
+          "source": "/releases/**",
           "headers": [
             {
               "key": "Cache-Control",
-              "value": "no-cache"
+              "value": "public, max-age=3600"
+            },
+            {
+              "key": "Content-Disposition",
+              "value": "attachment"
+            }
+          ]
+        },
+        {
+          "source": "/sitemap.xml",
+          "headers": [
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=3600"
+            }
+          ]
+        },
+        {
+          "source": "/app-ads.txt",
+          "headers": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain; charset=utf-8"
+            },
+            {
+              "key": "Cache-Control",
+              "value": "public, max-age=300"
             }
           ]
         }

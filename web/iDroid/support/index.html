@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>i2Droid Support</title>
+<meta name="robots" content="index, follow" />
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #f4f4f1;
+    --fg: #09090b;
+    --muted: #57575a;
+    --accent: #2563eb;
+    --border: #e2e2df;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.6;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+  header {
+    margin-bottom: 2.5rem;
+  }
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.4rem;
+  }
+  .updated {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 2.25rem 0 0.75rem;
+  }
+  p, li {
+    font-size: 0.97rem;
+    color: #26262a;
+  }
+  ul { padding-left: 1.25rem; }
+  li { margin-bottom: 0.4rem; }
+  a { color: var(--accent); }
+  .card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem 2rem;
+  }
+  .contact {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .btn {
+    display: inline-block;
+    margin-top: 0.75rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.6rem 1.1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>i2Droid — Support</h1>
+    <p class="updated">Direct, phone-to-phone file transfer for iPhone and Android</p>
+  </header>
+
+  <div class="card">
+    <p>
+      Need help with i2Droid? Start with the common issues below, or reach out directly and
+      we'll get back to you.
+    </p>
+
+    <h2>QR code won't scan</h2>
+    <ul>
+      <li>Make sure Camera permission is granted: Settings → i2Droid → Camera.</li>
+      <li>Hold the phone steady and keep the whole QR code inside the frame — for offline
+        pairing codes specifically, don't zoom in, since the code is denser than a normal QR
+        and needs the full pattern in view.</li>
+      <li>Good, even lighting helps a lot. Use the torch button in the scanner if it's dark.</li>
+    </ul>
+
+    <h2>Two devices can't connect / "waiting" forever</h2>
+    <ul>
+      <li>Both devices must be on the same Wi-Fi network, or one device's personal hotspot.</li>
+      <li>For fully offline pairing, turn off mobile data on both devices — only a shared local
+        network (e.g. one phone's hotspot) is needed, no internet connection at all.</li>
+      <li>If a transfer stalls mid-way, make sure neither device's screen has locked — locking
+        can suspend the app and pause the connection.</li>
+    </ul>
+
+    <h2>A received file is missing</h2>
+    <p>
+      Received photos and videos are saved to your device's regular Photos/Downloads
+      location. Check the app's "You" or history tab for a record of past transfers.
+    </p>
+
+    <h2>Contact us</h2>
+    <p>
+      Still stuck, or found a bug? Email us with your device model and iOS/Android version and
+      we'll help you out.
+    </p>
+    <a class="btn" href="mailto:support@asoltu.com">Email support@asoltu.com</a>
+
+    <div class="contact">
+      See also our <a href="/iDroid/privacy-policy">Privacy Policy</a>.
+    </div>
+  </div>
+</main>
+</body>
+</html>

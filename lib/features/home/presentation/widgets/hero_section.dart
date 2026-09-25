@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/app_urls.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../../../core/constants/breakpoints.dart';
+import '../../../../core/routing/route_names.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_radius.dart';
 import '../../../../core/theme/app_shadows.dart';
@@ -11,7 +12,7 @@ import '../../../../core/theme/app_spacing.dart';
 import '../../../../core/widgets/widgets.dart';
 import 'floating_soft_motion.dart';
 
-/// Premium hero — Stripe/Linear style entrance + dashboard mockup.
+/// Premium hero — brand message for schools & businesses.
 class HeroSection extends StatelessWidget {
   const HeroSection({super.key});
 
@@ -55,10 +56,10 @@ class _HeroCopy extends StatelessWidget {
   Widget build(BuildContext context) {
     final w = MediaQuery.sizeOf(context).width;
     final size = w < Breakpoints.mobile
-        ? 34.0
+        ? 32.0
         : w < Breakpoints.tablet
-            ? 42.0
-            : 54.0;
+            ? 40.0
+            : 52.0;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,7 +79,7 @@ class _HeroCopy extends StatelessWidget {
               Icon(Icons.auto_awesome, size: 14, color: AppColors.accentBlue),
               const SizedBox(width: 8),
               Text(
-                'AI-POWERED SCHOOL ERP',
+                'ASOLTU TECHNOLOGIES',
                 style: Theme.of(context).textTheme.labelMedium?.copyWith(
                       color: AppColors.accentBlue,
                       fontWeight: FontWeight.w700,
@@ -92,30 +93,35 @@ class _HeroCopy extends StatelessWidget {
             .fadeIn(duration: 400.ms)
             .slideY(begin: 0.2, end: 0, duration: 400.ms),
         const SizedBox(height: 22),
-        Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(
-                text: 'Run your entire school\n',
-                style: TextStyle(
-                  fontSize: size,
-                  fontWeight: FontWeight.w700,
-                  height: 1.12,
-                  letterSpacing: -1.0,
-                  color: AppColors.brandNavy,
+        Semantics(
+          header: true,
+          label:
+              'Building Intelligent Software for Schools and Businesses — ASOLTU Technologies',
+          child: Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Building Intelligent Software\n',
+                  style: TextStyle(
+                    fontSize: size,
+                    fontWeight: FontWeight.w700,
+                    height: 1.12,
+                    letterSpacing: -1.0,
+                    color: AppColors.brandNavy,
+                  ),
                 ),
-              ),
-              TextSpan(
-                text: 'on one intelligent platform.',
-                style: TextStyle(
-                  fontSize: size,
-                  fontWeight: FontWeight.w700,
-                  height: 1.12,
-                  letterSpacing: -1.0,
-                  color: AppColors.accentBlue,
+                TextSpan(
+                  text: 'for Schools & Businesses',
+                  style: TextStyle(
+                    fontSize: size,
+                    fontWeight: FontWeight.w700,
+                    height: 1.12,
+                    letterSpacing: -1.0,
+                    color: AppColors.accentBlue,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         )
             .animate()
@@ -123,10 +129,9 @@ class _HeroCopy extends StatelessWidget {
             .slideY(begin: 0.08, end: 0, duration: 480.ms),
         const SizedBox(height: 18),
         ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 520),
+          constraints: const BoxConstraints(maxWidth: 540),
           child: Text(
-            'ASOLTU is the AI-powered school ERP for admissions, attendance, fees, '
-            'academics, HR, and parent communication — secure, cloud-native, and built for scale.',
+            AppStrings.brandSubheadline,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   fontSize: 17,
                   height: 1.65,
@@ -140,33 +145,66 @@ class _HeroCopy extends StatelessWidget {
           runSpacing: 12,
           children: [
             AsoltuButton(
-              label: 'Start Free Demo',
-              icon: Icons.rocket_launch_outlined,
-              onPressed: () => launchUrl(
-                Uri.parse(AppUrls.erpPortal),
-                mode: LaunchMode.externalApplication,
-              ),
-            ),
-            AsoltuButton(
-              label: 'Book Live Demo',
-              variant: AsoltuButtonVariant.secondary,
+              label: 'Book Demo',
               icon: Icons.calendar_month_outlined,
               onPressed: () => showBookDemoDialog(context),
+            ),
+            AsoltuButton(
+              label: 'Explore Solutions',
+              variant: AsoltuButtonVariant.secondary,
+              icon: Icons.grid_view_rounded,
+              onPressed: () => context.go(AppRoutes.products),
             ),
           ],
         )
             .animate()
             .fadeIn(delay: 200.ms, duration: 400.ms)
             .slideY(begin: 0.1, end: 0, duration: 400.ms),
-        const SizedBox(height: 20),
-        Text(
-          'No credit card required · Live in minutes · Multi-campus ready',
-          style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: AppColors.textMuted,
-                fontWeight: FontWeight.w500,
-              ),
+        const SizedBox(height: 28),
+        Wrap(
+          spacing: 10,
+          runSpacing: 10,
+          children: const [
+            _TrustLabel(Icons.flag_outlined, 'Made in India 🇮🇳'),
+            _TrustLabel(Icons.cloud_done_outlined, 'Secure Cloud Platform'),
+            _TrustLabel(Icons.flutter_dash, 'Flutter Powered'),
+            _TrustLabel(Icons.devices_outlined, 'Responsive Design'),
+          ],
         ).animate().fadeIn(delay: 280.ms, duration: 400.ms),
       ],
+    );
+  }
+}
+
+class _TrustLabel extends StatelessWidget {
+  const _TrustLabel(this.icon, this.label);
+  final IconData icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: AppColors.surfaceMuted,
+        borderRadius: BorderRadius.circular(AppRadius.pill),
+        border: Border.all(color: AppColors.borderLight),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 15, color: AppColors.accentBlue),
+          const SizedBox(width: 6),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: AppColors.brandNavy,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -191,63 +229,67 @@ class _HeroVisual extends StatelessWidget {
             left: 0,
             top: 36,
             child: FloatingSoftMotion(
-              amplitude: 7,
-              child: const _FloatCard(
-                icon: Icons.groups_rounded,
-                label: 'Students',
-                value: '12.4k',
+              child: _MiniChip(
+                icon: Icons.school_outlined,
+                label: 'School ERP',
                 color: AppColors.accentBlue,
               ),
-            ).animate().fadeIn(delay: 260.ms, duration: 400.ms),
+            ),
           ),
           Positioned(
             right: 0,
-            top: 72,
-            child: FloatingSoftMotion(
-              amplitude: 9,
-              duration: const Duration(milliseconds: 3100),
-              child: const _FloatCard(
-                icon: Icons.payments_outlined,
-                label: 'Fees',
-                value: '₹2.1Cr',
-                color: AppColors.accentGold,
-              ),
-            ).animate().fadeIn(delay: 320.ms, duration: 400.ms),
-          ),
-          Positioned(
-            left: 8,
-            bottom: 24,
-            child: FloatingSoftMotion(
-              amplitude: 6,
-              duration: const Duration(milliseconds: 2700),
-              child: const _FloatCard(
-                icon: Icons.fact_check_outlined,
-                label: 'Attendance',
-                value: '96.2%',
-                color: AppColors.success,
-              ),
-            ).animate().fadeIn(delay: 380.ms, duration: 400.ms),
-          ),
-          Positioned(
-            right: 12,
             bottom: 48,
             child: FloatingSoftMotion(
-              amplitude: 8,
-              duration: const Duration(milliseconds: 3300),
-              child: const _FloatCard(
-                icon: Icons.insights_outlined,
-                label: 'AI Insights',
-                value: 'Live',
-                color: AppColors.brandNavy,
+              duration: const Duration(milliseconds: 3200),
+              child: _MiniChip(
+                icon: Icons.auto_awesome,
+                label: 'AI Ready',
+                color: AppColors.accentGoldDark,
               ),
-            ).animate().fadeIn(delay: 440.ms, duration: 400.ms),
+            ),
           ),
         ],
       ),
-    )
-        .animate()
-        .fadeIn(delay: 160.ms, duration: 520.ms)
-        .scale(begin: const Offset(0.96, 0.96), duration: 520.ms);
+    );
+  }
+}
+
+class _MiniChip extends StatelessWidget {
+  const _MiniChip({
+    required this.icon,
+    required this.label,
+    required this.color,
+  });
+  final IconData icon;
+  final String label;
+  final Color color;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        border: Border.all(color: AppColors.borderLight),
+        boxShadow: AppShadows.soft,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 18, color: color),
+          const SizedBox(width: 8),
+          Text(
+            label,
+            style: const TextStyle(
+              fontWeight: FontWeight.w700,
+              color: AppColors.brandNavy,
+              fontSize: 13,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -258,22 +300,18 @@ class _DashboardMock extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(AppRadius.lg),
-        border: Border.all(color: AppColors.borderLight),
+        borderRadius: BorderRadius.circular(AppRadius.xl),
+        gradient: AppColors.navyHero,
         boxShadow: AppShadows.elevated,
       ),
+      clipBehavior: Clip.antiAlias,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
-            height: 46,
-            padding: const EdgeInsets.symmetric(horizontal: 14),
-            decoration: const BoxDecoration(
-              color: AppColors.surfaceMuted,
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(AppRadius.lg),
-              ),
-            ),
+            height: 44,
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            color: Colors.white.withValues(alpha: 0.06),
             child: Row(
               children: [
                 _dot(const Color(0xFFFF5F57)),
@@ -281,23 +319,13 @@ class _DashboardMock extends StatelessWidget {
                 _dot(const Color(0xFFFEBC2E)),
                 const SizedBox(width: 6),
                 _dot(const Color(0xFF28C840)),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Container(
-                    height: 24,
-                    alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.symmetric(horizontal: 12),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: AppColors.borderLight),
-                    ),
-                    child: Text(
-                      'erp.asoltu.com · Dashboard',
-                      style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                            color: AppColors.textMuted,
-                          ),
-                    ),
+                const Spacer(),
+                Text(
+                  'ASOLTU · Admin Dashboard',
+                  style: TextStyle(
+                    color: Colors.white.withValues(alpha: 0.75),
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
@@ -305,77 +333,71 @@ class _DashboardMock extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(18),
               child: Column(
                 children: [
                   Row(
                     children: [
-                      Expanded(child: _kpi('Revenue', '₹48.2L', 0.78)),
+                      Expanded(child: _metric('Attendance', '96.4%', Icons.fact_check_outlined)),
                       const SizedBox(width: 10),
-                      Expanded(child: _kpi('Present', '94%', 0.94)),
+                      Expanded(child: _metric('Fees', 'On track', Icons.payments_outlined)),
                       const SizedBox(width: 10),
-                      Expanded(child: _kpi('Admits', '128', 0.62)),
+                      Expanded(child: _metric('AI Insights', 'Ready', Icons.auto_awesome)),
                     ],
                   ),
                   const SizedBox(height: 12),
                   Expanded(
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: AppColors.surfaceSoft,
-                              borderRadius:
-                                  BorderRadius.circular(AppRadius.md),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.08),
+                        borderRadius: BorderRadius.circular(AppRadius.lg),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Campus overview',
+                            style: TextStyle(
+                              color: Colors.white.withValues(alpha: 0.9),
+                              fontWeight: FontWeight.w700,
                             ),
-                            padding: const EdgeInsets.all(14),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Performance analytics',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleSmall
-                                      ?.copyWith(
-                                        color: AppColors.brandNavy,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                ),
-                                const SizedBox(height: 12),
-                                const Expanded(
-                                  child: CustomPaint(
-                                    painter: _MiniChartPainter(),
-                                    child: SizedBox.expand(),
+                          ),
+                          const SizedBox(height: 12),
+                          for (final row in [
+                            ('Admissions pipeline', 0.72),
+                            ('Fee collection', 0.84),
+                            ('Staff attendance', 0.91),
+                          ])
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 10),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    row.$1,
+                                    style: TextStyle(
+                                      color: Colors.white.withValues(alpha: 0.7),
+                                      fontSize: 12,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(height: 4),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(99),
+                                    child: LinearProgressIndicator(
+                                      value: row.$2,
+                                      minHeight: 6,
+                                      backgroundColor:
+                                          Colors.white.withValues(alpha: 0.12),
+                                      color: AppColors.accentGold,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          flex: 2,
-                          child: Column(
-                            children: [
-                              Expanded(
-                                child: _side(
-                                  Icons.auto_awesome,
-                                  'AI Reports',
-                                ),
-                              ),
-                              const SizedBox(height: 10),
-                              Expanded(
-                                child: _side(
-                                  Icons.chat_bubble_outline,
-                                  'Messages',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -393,181 +415,35 @@ class _DashboardMock extends StatelessWidget {
         decoration: BoxDecoration(color: c, shape: BoxShape.circle),
       );
 
-  Widget _kpi(String label, String value, double p) {
+  Widget _metric(String label, String value, IconData icon) {
     return Container(
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: AppColors.surfaceMuted,
+        color: Colors.white.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(AppRadius.md),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            label,
-            style: const TextStyle(
-              fontSize: 11,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textSecondary,
-            ),
-          ),
-          const SizedBox(height: 4),
+          Icon(icon, size: 16, color: AppColors.accentGold),
+          const SizedBox(height: 8),
           Text(
             value,
             style: const TextStyle(
-              fontSize: 16,
+              color: Colors.white,
               fontWeight: FontWeight.w700,
-              color: AppColors.brandNavy,
+              fontSize: 15,
             ),
           ),
-          const SizedBox(height: 8),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(99),
-            child: LinearProgressIndicator(
-              value: p,
-              minHeight: 5,
-              backgroundColor: Colors.white,
-              color: AppColors.accentBlue,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _side(IconData icon, String label) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: AppColors.surfaceMuted,
-        borderRadius: BorderRadius.circular(AppRadius.md),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(icon, color: AppColors.accentBlue, size: 22),
-          const SizedBox(height: 6),
           Text(
             label,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: AppColors.brandNavy,
+            style: TextStyle(
+              color: Colors.white.withValues(alpha: 0.65),
+              fontSize: 11,
             ),
           ),
         ],
       ),
     );
   }
-}
-
-class _FloatCard extends StatelessWidget {
-  const _FloatCard({
-    required this.icon,
-    required this.label,
-    required this.value,
-    required this.color,
-  });
-
-  final IconData icon;
-  final String label;
-  final String value;
-  final Color color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 132,
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color: Colors.white.withValues(alpha: 0.96),
-        borderRadius: BorderRadius.circular(AppRadius.lg),
-        border: Border.all(color: AppColors.borderLight),
-        boxShadow: AppShadows.soft,
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 34,
-            height: 34,
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.12),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(icon, size: 18, color: color),
-          ),
-          const SizedBox(width: 8),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  value,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 13,
-                    color: AppColors.brandNavy,
-                  ),
-                ),
-                Text(
-                  label,
-                  style: const TextStyle(
-                    fontSize: 10,
-                    color: AppColors.textMuted,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _MiniChartPainter extends CustomPainter {
-  const _MiniChartPainter();
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    if (size.width <= 0 || size.height <= 0) return;
-    final line = Paint()
-      ..color = AppColors.accentBlue
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2.5
-      ..strokeCap = StrokeCap.round;
-    const points = [0.25, 0.4, 0.32, 0.62, 0.5, 0.78, 0.7, 0.92];
-    final path = Path();
-    for (var i = 0; i < points.length; i++) {
-      final x = size.width * (i / (points.length - 1));
-      final y = size.height * (1 - points[i]);
-      if (i == 0) {
-        path.moveTo(x, y);
-      } else {
-        path.lineTo(x, y);
-      }
-    }
-    canvas.drawPath(path, line);
-    final fill = Path()
-      ..addPath(path, Offset.zero)
-      ..lineTo(size.width, size.height)
-      ..lineTo(0, size.height)
-      ..close();
-    canvas.drawPath(
-      fill,
-      Paint()
-        ..shader = LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [
-            AppColors.accentBlue.withValues(alpha: 0.2),
-            AppColors.accentBlue.withValues(alpha: 0.0),
-          ],
-        ).createShader(Offset.zero & size),
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

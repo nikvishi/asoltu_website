@@ -1,0 +1,179 @@
+{
+  "site": {
+    "name": "ASOLTU",
+    "origin": "https://asoltu.com",
+    "email": "info@asoltu.com",
+    "phone": "+91-9462133119",
+    "whatsapp": "https://wa.me/919462133119",
+    "erp": "https://erp.asoltu.com",
+    "address": "ASOLTU Technologies, Ramganj Mandi, Rajasthan, India"
+  },
+  "products": [
+    {
+      "id": "datahop",
+      "name": "DataHop",
+      "tagline": "Send files device to device. No cloud, no accounts.",
+      "description": "DataHop opens an encrypted WebRTC channel straight between two devices. Your files never touch a server, there is no size limit, and nobody has to sign up for anything.",
+      "route": "/software/datahop",
+      "icon": "datahop.png",
+      "version": "1.0.0",
+      "accent": "#12b981",
+      "featured": true,
+      "shots": [],
+      "builds": [
+        {
+          "platform": "windows",
+          "url": "/releases/DataHop-Windows-Setup.exe",
+          "size": "125 MB",
+          "requires": "Windows 10 or later, 64-bit"
+        },
+        {
+          "platform": "macos",
+          "url": "/releases/DataHop-Mac-Installer.dmg",
+          "size": "156 MB",
+          "requires": "macOS 11 Big Sur or later"
+        }
+      ],
+      "features": [
+        ["shield", "End-to-end encrypted", "Files move directly between devices. They never reach our servers."],
+        ["infinity", "No size limit", "Send a 40 GB folder as easily as a screenshot. No upload, no queue."],
+        ["radar", "Finds nearby devices", "Peers on the same network pair automatically, or scan a QR code."]
+      ]
+    },
+    {
+      "id": "download-manager",
+      "name": "Download Manager",
+      "tagline": "Saturate your connection. Survive any crash.",
+      "description": "A Rust download engine that splits every file across parallel streams and checkpoints as it goes. Pull the plug mid-download and it picks up exactly where it stopped.",
+      "route": "/software/download-manager",
+      "icon": "download-manager.png",
+      "version": "1.0.0",
+      "accent": "#3a5bf5",
+      "shots": [],
+      "builds": [
+        {
+          "platform": "windows",
+          "url": "/releases/Asoltu-Download-Manager-Setup-1.0.0.exe",
+          "size": "74 MB",
+          "requires": "Windows 10 or later, 64-bit"
+        },
+        {
+          "platform": "macos",
+          "url": "/releases/Asoltu-Download-Manager-1.0.0.dmg",
+          "size": "5.5 MB",
+          "requires": "macOS 11 Big Sur or later"
+        }
+      ],
+      "features": [
+        ["chip", "Rust engine", "Memory-safe and highly concurrent, so network I/O is never the bottleneck."],
+        ["split", "Segmented downloads", "Every file is split across parallel HTTP streams to max out your line."],
+        ["restore", "Crash-safe resume", "A power cut or a dropped connection costs you nothing. Resume and continue."]
+      ]
+    },
+    {
+      "id": "asoltu-remote",
+      "name": "AsoltuRemote",
+      "tagline": "Your desktop, from anywhere, in under a megabyte.",
+      "description": "A tiny desktop agent for Windows and macOS plus an iOS client. Low-latency control, secure signalling, and file transfer between the machines you actually use.",
+      "route": "/software/asoltu-remote",
+      "icon": "asoltu-remote.png",
+      "version": "1.0.0",
+      "accent": "#7b4df0",
+      "shots": [],
+      "builds": [
+        {
+          "platform": "windows",
+          "url": "/releases/AsoltuRemote-Setup.exe",
+          "size": "856 KB",
+          "requires": "Windows 10 or later, 64-bit"
+        },
+        {
+          "platform": "macos",
+          "url": "/releases/AsoltuRemote-Mac.zip",
+          "size": "781 KB",
+          "requires": "macOS 11 Big Sur or later"
+        }
+      ],
+      "features": [
+        ["cursor", "Low-latency control", "Mouse and keyboard input translated across platforms without the lag."],
+        ["swap", "File transfer built in", "Move files between host and client without a second tool."],
+        ["shield", "Device ID and password", "Authenticated over secure signalling servers. Nothing is left open."]
+      ]
+    },
+    {
+      "id": "pdf-o",
+      "name": "PDF-O",
+      "tagline": "Scan, edit and compress documents on your iPhone.",
+      "description": "Turn your camera into a scanner, run OCR over what you capture, then edit, sign and compress the result — all on device.",
+      "route": "/software/pdf-o",
+      "icon": "pdfo.jpg",
+      "version": "1.1.2",
+      "accent": "#f2603c",
+      "shots": ["pdfo_1.png", "pdfo_2.png"],
+      "portrait": true,
+      "builds": [
+        {
+          "platform": "appstore",
+          "url": "https://apps.apple.com/in/app/pdf-o/id6797936978",
+          "requires": "iPhone and iPad, iOS 15 or later"
+        }
+      ],
+      "features": [
+        ["scan", "OCR that reads anything", "Search inside a scanned page the moment you capture it."],
+        ["compress", "Real compression", "Cut a 40 MB scan down to a few megabytes without turning it to mush."],
+        ["pen", "Edit and sign", "Reorder pages, annotate, and drop in a signature before you send."]
+      ]
+    },
+    {
+      "id": "i2droid",
+      "name": "i2Droid",
+      "tagline": "Bridge your iPhone and your Android devices.",
+      "description": "The Hopp project. Move files and data across the ecosystem boundary over your local network, without a cloud round-trip in the middle.",
+      "route": "/software/i2droid",
+      "icon": "i2droid.jpg",
+      "version": "1.0",
+      "accent": "#0ea5a5",
+      "shots": ["hopp_1.png", "hopp_2.png"],
+      "portrait": true,
+      "builds": [
+        {
+          "platform": "appstore",
+          "url": "https://apps.apple.com/in/app/i2droid/id6803780035",
+          "requires": "iPhone and iPad, iOS 15 or later"
+        }
+      ],
+      "features": [
+        ["swap", "Cross-ecosystem transfer", "iPhone to Android and back, without emailing files to yourself."],
+        ["wifi", "Stays on your network", "Local transfers that never leave the room, let alone the country."]
+      ]
+    },
+    {
+      "id": "asoltu-app",
+      "name": "Asoltu",
+      "tagline": "Every Indian competitive exam, practised in one app.",
+      "description": "Chapterwise and full-length mock tests for RPSC, REET, SSC, UPSC and ICAI, with the most secure live test system we have built.",
+      "route": "/education/asoltu-app",
+      "icon": "asoltu.jpg",
+      "version": "1.4.17",
+      "accent": "#d99400",
+      "shots": ["asoltu_app_1.jpg", "asoltu_app_2.jpg", "asoltu_app_3.jpg", "asoltu_app_4.jpg"],
+      "portrait": true,
+      "builds": [
+        {
+          "platform": "appstore",
+          "url": "https://apps.apple.com/in/app/asoltu/id6796294470",
+          "requires": "iPhone and iPad, iOS 15 or later"
+        },
+        {
+          "platform": "playstore",
+          "url": "https://play.google.com/store/apps/details?id=com.absolutetutorials.app",
+          "requires": "Android 8.0 or later"
+        }
+      ],
+      "features": [
+        ["shield", "Secure live tests", "Real exam conditions, with the anti-cheat that live testing needs."],
+        ["trend", "Track every attempt", "Scores, accuracy and completion, subject by subject, over time."]
+      ]
+    }
+  ]
+}

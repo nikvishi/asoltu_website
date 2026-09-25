@@ -9,7 +9,7 @@ import 'firebase_options.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Clean URLs on web: https://asoltu.com/pricing (no hash routing).
+  // Clean URLs on web: https://asoltu.com/solutions (no hash routing).
   if (kIsWeb) {
     usePathUrlStrategy();
   }

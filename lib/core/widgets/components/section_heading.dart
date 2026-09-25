@@ -24,38 +24,44 @@ class SectionHeading extends StatelessWidget {
     final cross =
         center ? CrossAxisAlignment.center : CrossAxisAlignment.start;
 
-    return Column(
-      crossAxisAlignment: cross,
-      children: [
-        if (eyebrow != null) ...[
-          Text(
-            eyebrow!.toUpperCase(),
-            textAlign: align,
-            style: Theme.of(context).textTheme.labelMedium?.copyWith(
-                  color: AppColors.accentGoldDark,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: 1.4,
-                ),
-          ),
-          const SizedBox(height: AppSpacing.sm),
-        ],
-        Text(
-          title,
-          textAlign: align,
-          style: Theme.of(context).textTheme.displaySmall,
-        ),
-        if (subtitle != null) ...[
-          const SizedBox(height: AppSpacing.md),
-          ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 640),
-            child: Text(
-              subtitle!,
+    return Semantics(
+      container: true,
+      header: true,
+      label: title,
+      child: Column(
+        crossAxisAlignment: cross,
+        children: [
+          if (eyebrow != null) ...[
+            Text(
+              eyebrow!.toUpperCase(),
               textAlign: align,
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                    color: AppColors.accentGoldDark,
+                    fontWeight: FontWeight.w800,
+                    letterSpacing: 1.4,
+                  ),
             ),
+            const SizedBox(height: AppSpacing.sm),
+          ],
+          // Visual H2-equivalent section title (site H1 lives in hero / page intro).
+          Text(
+            title,
+            textAlign: align,
+            style: Theme.of(context).textTheme.displaySmall,
           ),
+          if (subtitle != null) ...[
+            const SizedBox(height: AppSpacing.md),
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 640),
+              child: Text(
+                subtitle!,
+                textAlign: align,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 }
