@@ -14,6 +14,7 @@ const _columns = [
       ('DataHop', AppRoutes.dataHop),
       ('Download Manager', AppRoutes.downloadManager),
       ('AsoltuRemote', AppRoutes.asoltuRemote),
+      ('ASOLTU Antivirus', AppRoutes.asoltuAntivirus),
       ('PDF-O', AppRoutes.pdfO),
       ('i2Droid', AppRoutes.i2droid),
     ],

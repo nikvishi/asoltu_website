@@ -81,6 +81,7 @@ class Product {
     this.accent = const Color(0xFF4D8DFF),
     this.releasedOn,
     this.supportEmail,
+    this.installNote,
   });
 
   final String id;
@@ -107,6 +108,10 @@ class Product {
   /// page has to carry real contact info on its own.
   final String? supportEmail;
 
+  /// Short install hint shown under the download button — e.g. how to get
+  /// past SmartScreen while a build is not yet code-signed.
+  final String? installNote;
+
   Build? buildFor(Platform p) {
     for (final b in builds) {
       if (b.platform == p) return b;
@@ -126,6 +131,73 @@ class Product {
 /// This is the only place release URLs, versions and sizes live — the
 /// downloads page, the product pages and the homepage all read from here.
 const List<Product> kProducts = [
+  Product(
+    id: 'asoltu-antivirus',
+    name: 'ASOLTU Antivirus',
+    tagline: 'Real-time protection for Windows. Light, local and private.',
+    description:
+        'Watches your Downloads, Desktop, Documents and startup locations as files '
+        'arrive, checks them against signatures, YARA rules and behaviour '
+        'heuristics, and moves threats into a locked quarantine. Ransomware decoy '
+        'files raise the alarm the moment something starts encrypting. File '
+        'contents never leave your PC.',
+    route: '/software/asoltu-antivirus',
+    iconAsset: 'assets/icons/products/asoltu-antivirus.png',
+    version: '1.0.0',
+    releasedOn: 'October 2026',
+    accent: Color(0xFF2EC9B3),
+    supportEmail: 'care@asoltu.com',
+    installNote:
+        'This first release is not code-signed yet, so Windows may show '
+        '“Windows protected your PC”. Click More info, then Run anyway. '
+        'Step-by-step guide and SHA-256 checksum: asoltu.com/antivirus/install-windows.html',
+    screenshots: [
+      'assets/images/products/antivirus_1.jpg',
+      'assets/images/products/antivirus_2.jpg',
+      'assets/images/products/antivirus_3.jpg',
+      'assets/images/products/antivirus_4.jpg',
+    ],
+    builds: [
+      Build(
+        platform: Platform.windows,
+        url: 'https://github.com/nikvishi/asoltu_website/releases/download/antivirus-v1.0.0/ASOLTU-ANTIVIRUS-Setup-1.0.0.exe',
+        size: '108 MB',
+        requirements: 'Windows 10 or 11, 64-bit',
+      ),
+    ],
+    features: [
+      ProductFeatureItem(
+        'Real-time protection',
+        'New and renamed files are scanned the moment they land, and high-risk threats are quarantined automatically.',
+        Icons.shield_rounded,
+      ),
+      ProductFeatureItem(
+        'Ransomware tripwires',
+        'Hidden decoy documents raise a critical alert as soon as anything tries to change them.',
+        Icons.lock_clock_rounded,
+      ),
+      ProductFeatureItem(
+        'Signatures, YARA and heuristics',
+        'Layered detection with signed intelligence updates. Every detection explains why it fired.',
+        Icons.manage_search_rounded,
+      ),
+      ProductFeatureItem(
+        'Safe quarantine and restore',
+        'Isolated files are stored non-executable with tamper-proof records, and restore puts them back in one click.',
+        Icons.inventory_2_rounded,
+      ),
+      ProductFeatureItem(
+        'Private by design',
+        'Scanning happens on your PC. Only file fingerprints are ever checked online, never the files.',
+        Icons.visibility_off_rounded,
+      ),
+      ProductFeatureItem(
+        'English, हिन्दी, Español',
+        'Pick your language in Settings. Runs quietly in the tray and starts with Windows.',
+        Icons.translate_rounded,
+      ),
+    ],
+  ),
   Product(
     id: 'datahop',
     name: 'DataHop',

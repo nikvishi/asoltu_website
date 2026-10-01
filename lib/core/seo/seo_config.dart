@@ -103,6 +103,12 @@ abstract final class SeoConfig {
           'Control your desktop from anywhere securely. Low-latency remote access, file transfer, and cross-platform clients for Windows, Mac, and iOS.',
       path: AppRoutes.asoltuRemote,
     ),
+    AppRoutes.asoltuAntivirus: const SeoMeta(
+      title: 'ASOLTU Antivirus for Windows | Free Real-time Protection | ASOLTU',
+      description:
+          'ASOLTU Antivirus protects Windows 10 and 11 with real-time file scanning, ransomware tripwires, YARA and signature detection, and safe quarantine. Private by design — files never leave your PC.',
+      path: AppRoutes.asoltuAntivirus,
+    ),
     AppRoutes.pdfO: const SeoMeta(
       title: 'PDF-O | ASOLTU',
       description:

@@ -68,6 +68,7 @@ final GoRouter appRouter = GoRouter(
         _page(AppRoutes.downloadManager, const DownloadManagerPage()),
         _page(AppRoutes.dataHop, const DataHopPage()),
         _page(AppRoutes.asoltuRemote, const AsoltuRemotePage()),
+        _page(AppRoutes.asoltuAntivirus, const AsoltuAntivirusPage()),
         _page(AppRoutes.pdfO, const PdfOPage()),
         _page(AppRoutes.khataBahi, const KhataBahiPage()),
         _page(AppRoutes.i2droid, const I2DroidPage()),

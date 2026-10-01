@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Install ASOLTU ANTIVIRUS on Windows</title>
+<meta name="description" content="How to install ASOLTU ANTIVIRUS 1.0.0 on Windows 10/11, including the SmartScreen “Run anyway” step." />
+<link rel="canonical" href="https://asoltu.com/antivirus/install-windows.html" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2307090c'/%3E%3Cpath fill='%232ec9b3' d='M16 4 L27 8.4 27 16.6 16 28 5 16.6 5 8.4 Z'/%3E%3C/svg%3E" />
+<style>
+  :root {
+    --bg: #f6f7f8; --surface: #ffffff; --fg: #0d1117; --muted: #57606a; --border: #d8dee4;
+    --accent: #13866f; --accent-ink: #ffffff; --warn-bg: #fff8e5; --warn-border: #e9c46a;
+    --ss-blue: #0063b1; --code-bg: #eef1f4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #07090c; --surface: #11151a; --fg: #e6edf3; --muted: #9aa6b2; --border: #262d36;
+      --accent: #2ec9b3; --accent-ink: #04120f; --warn-bg: #2a2310; --warn-border: #6b5a22;
+      --code-bg: #1a2028;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.6 "Segoe UI", system-ui, -apple-system, "Noto Sans Devanagari", sans-serif;
+    padding: 0 16px;
+  }
+  main { max-width: 760px; margin: 0 auto; padding-block: 40px 64px; }
+  header { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  header svg { width: 40px; height: 40px; flex: none; }
+  h1 { font-size: 1.6rem; line-height: 1.25; margin: 0; }
+  h2 { font-size: 1.15rem; margin: 2.2rem 0 .6rem; }
+  p { margin: .6rem 0; }
+  .muted { color: var(--muted); }
+  .lang { margin-left: auto; display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 3px; }
+  .lang button { border: 0; background: transparent; color: var(--muted); font: inherit; font-size: .9rem; padding: 4px 12px; border-radius: 6px; cursor: pointer; }
+  .lang button[aria-pressed="true"] { background: var(--fg); color: var(--bg); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 16px; }
+  .download { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+  .btn { display: inline-block; background: var(--accent); color: var(--accent-ink); text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 8px; }
+  .note { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 12px; padding: 14px 16px; margin-top: 16px; }
+  ol.steps { list-style: none; counter-reset: s; padding: 0; margin: 0; }
+  ol.steps > li { counter-increment: s; position: relative; padding-left: 44px; margin: 22px 0; }
+  ol.steps > li::before {
+    content: counter(s); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--fg); color: var(--bg); display: grid; place-items: center; font-weight: 700; font-size: .9rem;
+  }
+  kbd, code { font-family: Consolas, "Cascadia Mono", monospace; font-size: .88em; background: var(--code-bg); border-radius: 5px; padding: 1px 6px; }
+  .hash { word-break: break-all; display: block; padding: 10px 12px; margin-top: 6px; }
+  pre { background: var(--code-bg); border-radius: 8px; padding: 12px; overflow-x: auto; font-size: .85rem; margin: 8px 0 0; }
+
+  /* Illustration of the Windows SmartScreen dialog (not a screenshot). */
+  .ss { margin-top: 12px; max-width: 460px; background: var(--ss-blue); color: #fff; font-family: "Segoe UI", sans-serif; border-radius: 4px; overflow: hidden; box-shadow: 0 6px 24px rgb(0 0 0 / .25); }
+  .ss-body { padding: 22px 26px 18px; }
+  .ss-title { font-size: 1.45rem; font-weight: 300; margin: 0 0 12px; }
+  .ss-text { font-size: .85rem; margin: 0 0 10px; opacity: .95; }
+  .ss-link { font-size: .85rem; text-decoration: underline; display: inline-block; }
+  .ss-meta { font-size: .82rem; margin: 10px 0 0; line-height: 1.5; }
+  .ss-foot { display: flex; justify-content: flex-end; gap: 8px; padding: 14px 26px 18px; }
+  .ss-btn { border: 2px solid #fff; background: transparent; color: #fff; font: inherit; font-size: .85rem; padding: 4px 18px; }
+  .ss-btn.solid { background: #fff; color: var(--ss-blue); }
+  .hl { outline: 3px solid #ffd23f; outline-offset: 3px; border-radius: 2px; }
+  .cap { font-size: .8rem; margin-top: 6px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#07090c"/><path fill="#2ec9b3" d="M16 4 L27 8.4 27 16.6 16 28 5 16.6 5 8.4 Z"/></svg>
+    <div>
+      <h1 data-en="Install ASOLTU ANTIVIRUS" data-hi="ASOLTU ANTIVIRUS इंस्टॉल करें">Install ASOLTU ANTIVIRUS</h1>
+      <p class="muted" style="margin:0" data-en="Windows 10 / 11 (64-bit) · version 1.0.0" data-hi="Windows 10 / 11 (64-bit) · संस्करण 1.0.0">Windows 10 / 11 (64-bit) · version 1.0.0</p>
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">English</button>
+      <button type="button" data-lang="hi" aria-pressed="false">हिन्दी</button>
+    </div>
+  </header>
+
+  <div class="card download">
+    <div>
+      <strong>ASOLTU-ANTIVIRUS-Setup-1.0.0.exe</strong>
+      <div class="muted" style="font-size:.9rem">107.6 MB</div>
+    </div>
+    <a class="btn" href="https://github.com/nikvishi/asoltu_website/releases/download/antivirus-v1.0.0/ASOLTU-ANTIVIRUS-Setup-1.0.0.exe" data-en="Download for Windows" data-hi="Windows के लिए डाउनलोड करें">Download for Windows</a>
+  </div>
+
+  <div class="note">
+    <p style="margin:0" data-en="<strong>Why does Windows show a warning?</strong> Microsoft SmartScreen warns about any new program that does not yet have a paid code-signing certificate and a download history. It does not mean the file is harmful. Check the SHA-256 fingerprint below to be sure your download is the original, untouched file."
+       data-hi="<strong>Windows चेतावनी क्यों दिखाता है?</strong> Microsoft SmartScreen हर उस नए प्रोग्राम पर चेतावनी दिखाता है जिसके पास अभी पेड कोड-साइनिंग सर्टिफ़िकेट और डाउनलोड इतिहास नहीं है। इसका मतलब यह नहीं कि फ़ाइल खतरनाक है। नीचे दिए SHA-256 फ़िंगरप्रिंट से जाँच लें कि आपकी फ़ाइल असली और बिना बदलाव वाली है।"><strong>Why does Windows show a warning?</strong> Microsoft SmartScreen warns about any new program that does not yet have a paid code-signing certificate and a download history. It does not mean the file is harmful. Check the SHA-256 fingerprint below to be sure your download is the original, untouched file.</p>
+  </div>
+
+  <h2 data-en="Installation steps" data-hi="इंस्टॉल करने के चरण">Installation steps</h2>
+  <ol class="steps">
+    <li>
+      <span data-en="Download the installer and open it from your <strong>Downloads</strong> folder. If your browser says the file “isn’t commonly downloaded”, choose <strong>Keep</strong> (in Edge: <kbd>…</kbd> → <strong>Keep</strong> → <strong>Keep anyway</strong>)."
+            data-hi="इंस्टॉलर डाउनलोड करें और <strong>Downloads</strong> फ़ोल्डर से खोलें। अगर ब्राउज़र कहे कि फ़ाइल “आमतौर पर डाउनलोड नहीं होती”, तो <strong>Keep</strong> चुनें (Edge में: <kbd>…</kbd> → <strong>Keep</strong> → <strong>Keep anyway</strong>)।">Download the installer and open it from your <strong>Downloads</strong> folder. If your browser says the file “isn’t commonly downloaded”, choose <strong>Keep</strong> (in Edge: <kbd>…</kbd> → <strong>Keep</strong> → <strong>Keep anyway</strong>).</span>
+    </li>
+    <li>
+      <span data-en="A blue window titled <strong>“Windows protected your PC”</strong> appears. Click <strong>More info</strong>."
+            data-hi="नीले रंग की <strong>“Windows protected your PC”</strong> विंडो दिखेगी। <strong>More info</strong> पर क्लिक करें।">A blue window titled <strong>“Windows protected your PC”</strong> appears. Click <strong>More info</strong>.</span>
+      <div class="ss" aria-hidden="true">
+        <div class="ss-body">
+          <p class="ss-title">Windows protected your PC</p>
+          <p class="ss-text">Microsoft Defender SmartScreen prevented an unrecognized app from starting. Running this app might put your PC at risk.</p>
+          <span class="ss-link hl">More info</span>
+        </div>
+        <div class="ss-foot"><span class="ss-btn">Don’t run</span></div>
+      </div>
+      <p class="cap muted" data-en="Illustration — Windows may look slightly different." data-hi="उदाहरण चित्र — आपकी Windows में थोड़ा अलग दिख सकता है।">Illustration — Windows may look slightly different.</p>
+    </li>
+    <li>
+      <span data-en="Check that <strong>App</strong> shows <code>ASOLTU-ANTIVIRUS-Setup-1.0.0.exe</code>, then click <strong>Run anyway</strong>."
+            data-hi="देखें कि <strong>App</strong> में <code>ASOLTU-ANTIVIRUS-Setup-1.0.0.exe</code> लिखा है, फिर <strong>Run anyway</strong> पर क्लिक करें।">Check that <strong>App</strong> shows <code>ASOLTU-ANTIVIRUS-Setup-1.0.0.exe</code>, then click <strong>Run anyway</strong>.</span>
+      <div class="ss" aria-hidden="true">
+        <div class="ss-body">
+          <p class="ss-title">Windows protected your PC</p>
+          <p class="ss-text">Microsoft Defender SmartScreen prevented an unrecognized app from starting. Running this app might put your PC at risk.</p>
+          <p class="ss-meta">App: ASOLTU-ANTIVIRUS-Setup-1.0.0.exe<br />Publisher: Unknown publisher</p>
+        </div>
+        <div class="ss-foot"><span class="ss-btn hl">Run anyway</span><span class="ss-btn solid">Don’t run</span></div>
+      </div>
+      <p class="cap muted" data-en="“Unknown publisher” is expected until the app is code-signed." data-hi="जब तक ऐप कोड-साइन नहीं होता, “Unknown publisher” दिखना सामान्य है।">“Unknown publisher” is expected until the app is code-signed.</p>
+    </li>
+    <li>
+      <span data-en="Accept the licence, choose a folder (the default is fine) and click <strong>Install</strong>. No administrator password is needed. ASOLTU opens when setup finishes and keeps protecting you from the tray icon (bottom-right of the taskbar)."
+            data-hi="लाइसेंस स्वीकार करें, फ़ोल्डर चुनें (डिफ़ॉल्ट ठीक है) और <strong>Install</strong> पर क्लिक करें। एडमिन पासवर्ड की ज़रूरत नहीं है। सेटअप पूरा होते ही ASOLTU खुल जाएगा और टास्कबार के दाएँ कोने के ट्रे आइकन से आपकी सुरक्षा करता रहेगा।">Accept the licence, choose a folder (the default is fine) and click <strong>Install</strong>. No administrator password is needed. ASOLTU opens when setup finishes and keeps protecting you from the tray icon (bottom-right of the taskbar).</span>
+    </li>
+  </ol>
+
+  <h2 data-en="Verify your download (recommended)" data-hi="डाउनलोड की जाँच करें (सुझाया गया)">Verify your download (recommended)</h2>
+  <div class="card">
+    <p style="margin-top:0" data-en="Open <strong>PowerShell</strong> (right-click Start → Terminal) and run:" data-hi="<strong>PowerShell</strong> खोलें (Start पर राइट-क्लिक → Terminal) और यह चलाएँ:">Open <strong>PowerShell</strong> (right-click Start → Terminal) and run:</p>
+    <pre>Get-FileHash "$env:USERPROFILE\Downloads\ASOLTU-ANTIVIRUS-Setup-1.0.0.exe" -Algorithm SHA256</pre>
+    <p data-en="The <strong>Hash</strong> it prints must match exactly:" data-hi="जो <strong>Hash</strong> दिखे वह बिल्कुल इससे मिलना चाहिए:">The <strong>Hash</strong> it prints must match exactly:</p>
+    <code class="hash">0D3A0FD386DB3D5BFAD41C9B16A3A3B6F314606665DBC74E425DB9B0A6D00A07</code>
+    <p class="muted" style="margin-bottom:0" data-en="If it does not match, delete the file and download it again only from this page."
+       data-hi="अगर मेल नहीं खाता, तो फ़ाइल हटा दें और सिर्फ़ इसी पेज से दोबारा डाउनलोड करें।">If it does not match, delete the file and download it again only from this page.</p>
+  </div>
+
+  <h2 data-en="Still blocked?" data-hi="फिर भी ब्लॉक हो रहा है?">Still blocked?</h2>
+  <ul>
+    <li data-en="No <strong>Run anyway</strong> button: your PC or organisation enforces SmartScreen. Ask your administrator, or right-click the file → <strong>Properties</strong> → tick <strong>Unblock</strong> → <strong>OK</strong>, then open it again."
+        data-hi="<strong>Run anyway</strong> बटन नहीं है: आपके PC या संस्था ने SmartScreen सख़्त किया है। एडमिन से पूछें, या फ़ाइल पर राइट-क्लिक → <strong>Properties</strong> → <strong>Unblock</strong> पर टिक → <strong>OK</strong>, फिर दोबारा खोलें।">No <strong>Run anyway</strong> button: your PC or organisation enforces SmartScreen. Ask your administrator, or right-click the file → <strong>Properties</strong> → tick <strong>Unblock</strong> → <strong>OK</strong>, then open it again.</li>
+    <li data-en="“Smart App Control” blocked it (Windows 11): this mode only allows signed apps and has no bypass. Install ASOLTU on a PC without Smart App Control, or wait for the signed release."
+        data-hi="“Smart App Control” ने रोका (Windows 11): यह मोड सिर्फ़ साइन किए गए ऐप चलने देता है और इसमें कोई बायपास नहीं है। ASOLTU को Smart App Control के बिना वाले PC पर इंस्टॉल करें, या साइन किए गए रिलीज़ का इंतज़ार करें।">“Smart App Control” blocked it (Windows 11): this mode only allows signed apps and has no bypass. Install ASOLTU on a PC without Smart App Control, or wait for the signed release.</li>
+    <li data-en="Never turn off Microsoft Defender or SmartScreen to install ASOLTU — it is not required."
+        data-hi="ASOLTU इंस्टॉल करने के लिए Microsoft Defender या SmartScreen कभी बंद न करें — इसकी ज़रूरत नहीं है।">Never turn off Microsoft Defender or SmartScreen to install ASOLTU — it is not required.</li>
+  </ul>
+
+  <p class="muted" style="margin-top:2.5rem;font-size:.9rem" data-en="Help: care@asoltu.com" data-hi="सहायता: care@asoltu.com">Help: care@asoltu.com</p>
+</main>
+<script>
+  (function () {
+    var buttons = document.querySelectorAll(".lang button");
+    function apply(lang) {
+      document.documentElement.lang = lang;
+      document.querySelectorAll("[data-en]").forEach(function (el) {
+        var v = el.getAttribute("data-" + lang) || el.getAttribute("data-en");
+        if (v) el.innerHTML = v;
+      });
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
+      try { localStorage.setItem("asoltu-install-lang", lang); } catch (e) {}
+    }
+    buttons.forEach(function (b) { b.addEventListener("click", function () { apply(b.dataset.lang); }); });
+    var saved = null;
+    try { saved = localStorage.getItem("asoltu-install-lang"); } catch (e) {}
+    var guess = saved || (/^hi\b/i.test(navigator.language || "") ? "hi" : "en");
+    if (guess !== "en") apply(guess);
+  })();
+</script>
+</body>
+</html>

@@ -129,6 +129,34 @@ class _Hero extends StatelessWidget {
                   ),
                   const SizedBox(height: 34),
                   SmartDownloadCta(product: product, productNameInLabel: true),
+                  if (product.installNote != null) ...[
+                    const SizedBox(height: 18),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 560),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.info_outline_rounded,
+                            size: 18,
+                            color: context.textSecondary,
+                          ),
+                          const SizedBox(width: 8),
+                          Flexible(
+                            child: SelectableText(
+                              product.installNote!,
+                              style: TextStyle(
+                                color: context.textSecondary,
+                                fontSize: 13.5,
+                                height: 1.5,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                   SizedBox(height: isMobile ? 48 : 72),
                   if (shot != null)
                     Reveal(

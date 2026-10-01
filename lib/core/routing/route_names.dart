@@ -16,6 +16,7 @@ abstract final class AppRoutes {
   static const downloadManager = '/software/download-manager';
   static const dataHop = '/software/datahop';
   static const asoltuRemote = '/software/asoltu-remote';
+  static const asoltuAntivirus = '/software/asoltu-antivirus';
   static const pdfO = '/software/pdf-o';
   static const khataBahi = '/software/khata-bahi';
   static const i2droid = '/software/i2droid';
@@ -63,6 +64,7 @@ abstract final class AppRouteLabels {
     AppRoutes.downloadManager: 'Download Manager',
     AppRoutes.dataHop: 'DataHop',
     AppRoutes.asoltuRemote: 'AsoltuRemote',
+    AppRoutes.asoltuAntivirus: 'ASOLTU Antivirus',
     AppRoutes.pdfO: 'PDF-O',
     AppRoutes.i2droid: 'i2Droid',
     AppRoutes.asoltuApp: 'Asoltu App',

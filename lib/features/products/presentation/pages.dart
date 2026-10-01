@@ -48,6 +48,12 @@ class AsoltuRemotePage extends StatelessWidget {
   Widget build(BuildContext context) => const _CatalogPage('asoltu-remote');
 }
 
+class AsoltuAntivirusPage extends StatelessWidget {
+  const AsoltuAntivirusPage({super.key});
+  @override
+  Widget build(BuildContext context) => const _CatalogPage('asoltu-antivirus');
+}
+
 class PdfOPage extends StatelessWidget {
   const PdfOPage({super.key});
   @override
